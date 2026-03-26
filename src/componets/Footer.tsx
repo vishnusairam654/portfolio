@@ -8,8 +8,8 @@ const Footer = () => {
   const [showLinks, setShowLinks] = useState(false);
 
   const navLinks = [
-    { name: "HOME", href: "#" },
-    { name: "ABOUT", href: "#about" },
+    { name: "HOME",     href: "#" },
+    { name: "ABOUT",    href: "#about" },
     { name: "MISSIONS", href: "#projects" },
   ];
 
@@ -20,26 +20,24 @@ const Footer = () => {
         position: "relative",
         width: "100%",
         backgroundColor: "#050D1A",
-        // Soft dot grid to match the tactical theme
-        backgroundImage:
-          "radial-gradient(rgba(246, 108, 45, 0.08) 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(rgba(246,108,45,0.08) 1px, transparent 1px)",
         backgroundSize: "30px 30px",
         color: "#FDF8F5",
-        pt: 12,
+        pt: { xs: 8, md: 12 },
         pb: 6,
         px: { xs: 4, md: 10 },
         overflow: "hidden",
         borderTop: "6px solid var(--naruto_jumpsuit)",
       }}
     >
-      {/* ── CTA / SUMMONING SECTION ── */}
-      <Box sx={{ textAlign: "center", mb: 10 }}>
+      {/* ── CTA / Summoning ── */}
+      <Box sx={{ textAlign: "center", mb: { xs: 7, md: 10 } }}>
         <Typography
           sx={{
             fontFamily: "var(--font-oswald)",
             color: "var(--naruto_jumpsuit)",
             letterSpacing: "4px",
-            fontSize: "1rem",
+            fontSize: { xs: "0.75rem", md: "1rem" },
             fontWeight: "bold",
             mb: 2,
           }}
@@ -50,9 +48,9 @@ const Footer = () => {
           variant="h2"
           sx={{
             fontFamily: "var(--font-the-last-shuriken)",
-            fontSize: { xs: "3rem", md: "5rem" },
+            fontSize: { xs: "2.2rem", sm: "3rem", md: "5rem" },
             color: "#fff",
-            lineHeight: 1,
+            lineHeight: 1.1,
             mb: 5,
           }}
         >
@@ -76,20 +74,16 @@ const Footer = () => {
               alignItems: "center",
               gap: 1.5,
               cursor: "pointer",
-              px: { xs: 4, md: 5 },
-              py: 2,
-              backgroundColor: copied
-                ? "var(--zoro_bandana)"
-                : "var(--naruto_jumpsuit)",
+              px: { xs: 3, md: 5 },
+              py: { xs: 1.5, md: 2 },
+              backgroundColor: copied ? "var(--zoro_bandana)" : "var(--naruto_jumpsuit)",
               color: "#fff",
               fontFamily: "var(--font-the-last-shuriken)",
-              fontSize: "1.2rem",
+              fontSize: { xs: "0.95rem", md: "1.2rem" },
               letterSpacing: "2px",
               textDecoration: "none",
               borderRadius: "4px",
-              // slight skew for scroll / dynamic feel
-              clipPath:
-                "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
+              clipPath: "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
               transition: "var(--transition)",
               boxShadow: copied
                 ? "0 10px 30px rgba(26,107,60,0.4)"
@@ -102,26 +96,20 @@ const Footer = () => {
               },
             }}
           >
-            <GiNinjaStar size={20} /> {copied ? "COPIED!" : "SUMMON ME"}
+            <GiNinjaStar size={18} />
+            {copied ? "COPIED!" : "SUMMON ME"}
           </Box>
         </Box>
 
-        {/* Confirmation Text & Hidden Links */}
-        <Box
-          sx={{
-            mt: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        {/* Confirmation + links */}
+        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Box sx={{ height: "24px", mb: 2 }}>
             <Fade in={copied}>
               <Typography
                 sx={{
                   fontFamily: "var(--font-oswald)",
                   color: "var(--zoro_bandana)",
-                  fontSize: "0.85rem",
+                  fontSize: "0.82rem",
                   letterSpacing: "2px",
                   fontWeight: "bold",
                 }}
@@ -132,99 +120,49 @@ const Footer = () => {
           </Box>
 
           <Collapse in={showLinks}>
-            <Stack
-              direction="row"
-              spacing={3}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Box
-                component="a"
-                href="https://github.com/vishnusairam654"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: { xs: "48px", md: "54px" },
-                  height: { xs: "48px", md: "54px" },
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  color: "#A0AEC0",
-                  transition: "var(--transition)",
-                  "&:hover": {
-                    backgroundColor: "var(--naruto_jumpsuit)",
-                    color: "#fff",
-                    transform: "scale(1.1)",
-                  },
-                }}
-              >
-                <FaGithub size={24} />
-              </Box>
-
-              <Box
-                component="a"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: { xs: "48px", md: "54px" },
-                  height: { xs: "48px", md: "54px" },
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  color: "#A0AEC0",
-                  transition: "var(--transition)",
-                  "&:hover": {
-                    backgroundColor: "#0077b5",
-                    color: "#fff",
-                    transform: "scale(1.1)",
-                  },
-                }}
-              >
-                <FaLinkedin size={24} />
-              </Box>
+            <Stack direction="row" spacing={3} justifyContent="center" alignItems="center">
+              {[
+                { href: "https://github.com/vishnusairam654", Icon: FaGithub, hoverBg: "var(--naruto_jumpsuit)" },
+                { href: "#", Icon: FaLinkedin, hoverBg: "#0077b5" },
+              ].map(({ href, Icon, hoverBg }) => (
+                <Box
+                  key={href}
+                  component="a"
+                  href={href}
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noopener noreferrer" : undefined}
+                  sx={{
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    width: 50, height: 50, borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.05)",
+                    color: "#A0AEC0",
+                    transition: "var(--transition)",
+                    "&:hover": { backgroundColor: hoverBg, color: "#fff", transform: "scale(1.1)" },
+                  }}
+                >
+                  <Icon size={22} />
+                </Box>
+              ))}
             </Stack>
           </Collapse>
         </Box>
       </Box>
 
-      {/* ── THEMATIC DIVIDER ── */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 10 }}>
-        <Box
-          sx={{
-            flex: 1,
-            height: "1px",
-            background:
-              "linear-gradient(to right, transparent, rgba(255,255,255,0.15))",
-          }}
-        />
-        <GiNinjaStar
-          size={32}
-          color="var(--naruto_jumpsuit)"
-          style={{ opacity: 0.8 }}
-        />
-        <Box
-          sx={{
-            flex: 1,
-            height: "1px",
-            background:
-              "linear-gradient(to left, transparent, rgba(255,255,255,0.15))",
-          }}
-        />
+      {/* ── Divider ── */}
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: { xs: 7, md: 10 } }}>
+        <Box sx={{ flex: 1, height: "1px", background: "linear-gradient(to right, transparent, rgba(255,255,255,0.15))" }} />
+        <GiNinjaStar size={28} color="var(--naruto_jumpsuit)" style={{ opacity: 0.8 }} />
+        <Box sx={{ flex: 1, height: "1px", background: "linear-gradient(to left, transparent, rgba(255,255,255,0.15))" }} />
       </Box>
 
-      {/* ── 3-COLUMN INFO ── */}
-      <Grid container spacing={6} sx={{ mb: 10 }}>
-        {/* BRANDING */}
+      {/* ── 3-Column Info ── */}
+      <Grid container spacing={{ xs: 4, md: 6 }} sx={{ mb: { xs: 7, md: 10 } }}>
+        {/* Branding */}
         <Grid size={{ xs: 12, md: 5 }}>
           <Typography
             sx={{
               fontFamily: "var(--font-the-last-shuriken)",
-              fontSize: "2.5rem",
+              fontSize: { xs: "2rem", md: "2.5rem" },
               letterSpacing: "3px",
               color: "var(--naruto_jumpsuit)",
               lineHeight: 1,
@@ -236,7 +174,7 @@ const Footer = () => {
           <Typography
             sx={{
               fontFamily: "var(--font-midorima)",
-              fontSize: "0.95rem",
+              fontSize: { xs: "0.88rem", md: "0.95rem" },
               color: "#A0AEC0",
               lineHeight: 1.8,
               maxWidth: "350px",
@@ -248,17 +186,9 @@ const Footer = () => {
           </Typography>
         </Grid>
 
-        {/* QUICK NAVIGATION */}
-        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-          <Typography
-            sx={{
-              fontFamily: "var(--font-oswald)",
-              fontSize: "1.15rem",
-              color: "#fff",
-              letterSpacing: "2px",
-              mb: 3,
-            }}
-          >
+        {/* Quick Nav */}
+        <Grid size={{ xs: 6, sm: 6, md: 3 }}>
+          <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: { xs: "1rem", md: "1.15rem" }, color: "#fff", letterSpacing: "2px", mb: 3 }}>
             QUICK TRAVEL
           </Typography>
           <Stack spacing={1.5}>
@@ -269,7 +199,7 @@ const Footer = () => {
                 href={link.href}
                 sx={{
                   fontFamily: "var(--font-oswald)",
-                  fontSize: "0.95rem",
+                  fontSize: { xs: "0.88rem", md: "0.95rem" },
                   color: "#A0AEC0",
                   textDecoration: "none",
                   letterSpacing: "1px",
@@ -284,100 +214,51 @@ const Footer = () => {
           </Stack>
         </Grid>
 
-        {/* SOCIAL COMS */}
-        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-          <Typography
-            sx={{
-              fontFamily: "var(--font-oswald)",
-              fontSize: "1.15rem",
-              color: "#fff",
-              letterSpacing: "2px",
-              mb: 3,
-            }}
-          >
-            COMMUNICATION
+        {/* Communication */}
+        <Grid size={{ xs: 6, sm: 6, md: 4 }}>
+          <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: { xs: "1rem", md: "1.15rem" }, color: "#fff", letterSpacing: "2px", mb: 3 }}>
+            CONTACT
           </Typography>
           <Stack spacing={2.5}>
-            {/* GITHUB */}
-            <Box
-              component="a"
-              href="https://github.com/vishnusairam654"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                color: "#A0AEC0",
-                textDecoration: "none",
-                transition: "var(--transition)",
-                "&:hover": { color: "#fff" },
-              }}
-            >
+            {[
+              { href: "https://github.com/vishnusairam654", Icon: FaGithub, label: "@vishnusairam654", hoverBg: "var(--naruto_jumpsuit)" },
+              { href: "#", Icon: FaLinkedin, label: "LinkedIn", hoverBg: "#0077b5" },
+            ].map(({ href, Icon, label, hoverBg }) => (
               <Box
+                key={label}
+                component="a"
+                href={href}
+                target={href !== "#" ? "_blank" : undefined}
+                rel={href !== "#" ? "noopener noreferrer" : undefined}
                 sx={{
-                  p: 1.5,
-                  backgroundColor: "rgba(255,255,255,0.04)",
-                  borderRadius: "8px",
+                  display: "flex", alignItems: "center", gap: 1.5,
+                  color: "#A0AEC0", textDecoration: "none",
                   transition: "var(--transition)",
-                  "&:hover": { backgroundColor: "var(--naruto_jumpsuit)" },
+                  "&:hover": { color: "#fff" },
                 }}
               >
-                <FaGithub size={22} />
+                <Box
+                  sx={{
+                    p: 1.25,
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    borderRadius: "8px",
+                    transition: "var(--transition)",
+                    flexShrink: 0,
+                    "&:hover": { backgroundColor: hoverBg },
+                  }}
+                >
+                  <Icon size={20} />
+                </Box>
+                <Typography sx={{ fontFamily: "var(--font-oswald)", letterSpacing: "1px", fontSize: { xs: "0.82rem", md: "1rem" } }}>
+                  {label}
+                </Typography>
               </Box>
-              <Typography
-                sx={{
-                  fontFamily: "var(--font-oswald)",
-                  letterSpacing: "1px",
-                  fontSize: "1rem",
-                }}
-              >
-                @vishnusairam654
-              </Typography>
-            </Box>
-
-            {/* LINKEDIN */}
-            <Box
-              component="a"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                color: "#A0AEC0",
-                textDecoration: "none",
-                transition: "var(--transition)",
-                "&:hover": { color: "#0077b5" }, // LinkedIn blue
-              }}
-            >
-              <Box
-                sx={{
-                  p: 1.5,
-                  backgroundColor: "rgba(255,255,255,0.04)",
-                  borderRadius: "8px",
-                  transition: "var(--transition)",
-                  "&:hover": { backgroundColor: "#0077b5", color: "#fff" },
-                }}
-              >
-                <FaLinkedin size={22} />
-              </Box>
-              <Typography
-                sx={{
-                  fontFamily: "var(--font-oswald)",
-                  letterSpacing: "1px",
-                  fontSize: "1rem",
-                }}
-              >
-                Connect on LinkedIn
-              </Typography>
-            </Box>
+            ))}
           </Stack>
         </Grid>
       </Grid>
 
-      {/* ── COPYRIGHT BAR ── */}
+      {/* ── Copyright ── */}
       <Box
         sx={{
           borderTop: "1px solid rgba(255,255,255,0.08)",
@@ -387,26 +268,13 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "center",
           gap: 2,
+          textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Typography
-          sx={{
-            fontFamily: "var(--font-midorima)",
-            fontSize: "0.85rem",
-            color: "#718096",
-            letterSpacing: "1px",
-          }}
-        >
+        <Typography sx={{ fontFamily: "var(--font-midorima)", fontSize: { xs: "0.75rem", md: "0.85rem" }, color: "#718096", letterSpacing: "1px" }}>
           © {new Date().getFullYear()} VISHNU SAI RAM. ALL JUTSU MASTERED.
         </Typography>
-        <Typography
-          sx={{
-            fontFamily: "var(--font-oswald)",
-            fontSize: "0.8rem",
-            color: "#4A5568",
-            letterSpacing: "2px",
-          }}
-        >
+        <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: { xs: "0.7rem", md: "0.8rem" }, color: "#4A5568", letterSpacing: "2px" }}>
           BUILT WITH CHAKRA & REACT
         </Typography>
       </Box>

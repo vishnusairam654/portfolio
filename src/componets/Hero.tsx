@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import img1 from "../assets/images/image_1.png";
 import img2 from "../assets/images/image_2.png";
@@ -27,18 +28,12 @@ const collageImages = [
   { src: img6, w: 175, h: 170, top: "50%", left: "20%", rotate: 10, z: 10 },
   { src: img7, w: 200, h: 250, top: "80%", left: "75%", rotate: -14, z: 7 },
   { src: img8, w: 190, h: 180, top: "1%", left: "32%", rotate: 5, z: 8 },
-  {
-    src: imgMaster2,
-    w: 450,
-    h: 300,
-    top: "75%",
-    left: "10%",
-    rotate: 0,
-    z: 11,
-  },
+  { src: imgMaster2, w: 450, h: 300, top: "75%", left: "10%", rotate: 0, z: 11 },
 ];
 
 const Hero = () => {
+  const isMobile = useMediaQuery("(max-width: 900px)");
+
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -59,20 +54,19 @@ const Hero = () => {
           setDisplayText(
             isDeleting
               ? currentRole.substring(0, displayText.length - 1)
-              : currentRole.substring(0, displayText.length + 1),
+              : currentRole.substring(0, displayText.length + 1)
           );
         },
-        isDeleting ? 50 : 100,
+        isDeleting ? 50 : 100
       );
     }
-
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
 
   return (
     <section
       id="home"
-      className="absolute top-0 left-0 w-screen h-screen bg-(--naruto_jumpsuit) overflow-visible"
+      className="absolute top-0 left-0 w-screen h-screen bg-(--naruto_jumpsuit) overflow-hidden"
     >
       {/* ── Decorative background elements ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -112,59 +106,97 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* ── Image Collage (right side, behind text) ── */}
-      <div
-        className="absolute top-[50%] right-0 -translate-y-1/2 w-[60vw] h-[60vh] z-5 pointer-events-auto overflow-visible"
-        style={{ animation: "fadeInUp 0.8s ease-out 0.4s both" }}
-      >
-        {collageImages.map((img, i) => (
-          <div
-            key={i}
-            className="polaroid-card"
-            style={{
-              width: img.w,
-              height: img.h + 24,
-              top: img.top,
-              left: img.left,
-              transform: `rotate(${img.rotate}deg)`,
-              zIndex: img.z,
-              animation: `fadeInUp 0.6s ease-out ${0.5 + i * 0.12}s both`,
-            }}
-          >
-            <img src={img.src} alt={`Project ${i + 1}`} />
-          </div>
-        ))}
-      </div>
+      {/* ── Image Collage — desktop only ── */}
+      {!isMobile && (
+        <div
+          className="absolute top-[50%] right-0 -translate-y-1/2 w-[60vw] h-[60vh] z-5 pointer-events-auto overflow-visible"
+          style={{ animation: "fadeInUp 0.8s ease-out 0.4s both" }}
+        >
+          {collageImages.map((img, i) => (
+            <div
+              key={i}
+              className="polaroid-card"
+              style={{
+                width: img.w,
+                height: img.h + 24,
+                top: img.top,
+                left: img.left,
+                transform: `rotate(${img.rotate}deg)`,
+                zIndex: img.z,
+                animation: `fadeInUp 0.6s ease-out ${0.5 + i * 0.12}s both`,
+              }}
+            >
+              <img src={img.src} alt={`Project ${i + 1}`} />
+            </div>
+          ))}
+        </div>
+      )}
 
-      {/* ── Main content ── */}
-      <div className="absolute left-0 top-[50%] -translate-y-1/2 w-screen h-[45vh] z-10 flex flex-col justify-center pl-[8%] pointer-events-none">
-        <div className="flex flex-col gap-5">
+      {/* ── Main text content ── */}
+      <div
+        className={`
+          absolute left-0 top-[50%] -translate-y-1/2
+          w-screen z-10 flex flex-col justify-center
+          pointer-events-none
+          ${isMobile ? "px-6 py-4" : "pl-[8%]"}
+        `}
+        style={{ height: isMobile ? "auto" : "45vh" }}
+      >
+        <div className="flex flex-col" style={{ gap: isMobile ? "14px" : "20px" }}>
           {/* Greeting */}
           <p
-            className="font-the-last-shuriken text-(--naruto_sage_red) text-2xl tracking-widest uppercase"
-            style={{ animation: "fadeInUp 0.6s ease-out both" }}
+            className="font-the-last-shuriken text-(--naruto_sage_red) tracking-widest uppercase"
+            style={{
+              fontSize: isMobile ? "1rem" : "1.5rem",
+              animation: "fadeInUp 0.6s ease-out both",
+            }}
           >
             I'm
           </p>
 
-          {/* Name — dual layer: stroke (bottom) + solid clipped (top) */}
+          {/* Name */}
           <div
-            className="hero-name-wrapper font-midorima text-[clamp(80px,12vw,170px)] leading-[0.9] mt-0 whitespace-nowrap"
-            style={{ animation: "fadeInUp 0.6s ease-out 0.15s both" }}
+            className="hero-name-wrapper font-midorima leading-[0.9] whitespace-nowrap"
+            style={{
+              fontSize: isMobile
+                ? "clamp(38px, 9vw, 58px)"
+                : "clamp(80px, 12vw, 170px)",
+              animation: "fadeInUp 0.6s ease-out 0.15s both",
+            }}
           >
-            {/* Stroke layer (always visible, outline only) */}
-            <span className="hero-name-stroke">Vishnu Sai Ram</span>
-            {/* Solid layer (clipped to left ~55%, hides over collage area) */}
-            <span className="hero-name-solid" aria-hidden="true">
-              Vishnu <span className="text-transparent" style={{ color: "transparent" }}>Sai</span> Ram
-            </span>
-            <span className="text-(--naruto_sage_red)">.</span>
+            {isMobile ? (
+              /* Mobile: simple solid name, no dual-layer clip trick */
+              <span style={{ color: "var(--naruto_hair)" }}>
+                Vishnu Sai Ram
+                <span style={{ color: "var(--naruto_sage_red)" }}>.</span>
+              </span>
+            ) : (
+              /* Desktop: dual-layer stroke + solid clip */
+              <>
+                <span className="hero-name-stroke">Vishnu Sai Ram</span>
+                <span className="hero-name-solid" aria-hidden="true">
+                  Vishnu{" "}
+                  <span
+                    className="text-transparent"
+                    style={{ color: "transparent" }}
+                  >
+                    Sai
+                  </span>{" "}
+                  Ram
+                </span>
+                <span className="text-(--naruto_sage_red)">.</span>
+              </>
+            )}
 
             {/* Handwritten underline */}
             <svg
               viewBox="0 0 300 12"
-              className="block mt-2 ml-auto"
-              style={{ width: "clamp(300px, 60vw, 650px)", height: "20px" }}
+              className="block mt-2"
+              style={{
+                width: isMobile ? "min(100%, 260px)" : "clamp(300px, 60vw, 650px)",
+                height: "16px",
+                marginLeft: isMobile ? "0" : "auto",
+              }}
               preserveAspectRatio="none"
             >
               <path
@@ -181,20 +213,31 @@ const Hero = () => {
 
           {/* Typewriter role */}
           <div
-            className="flex items-center gap-2 mt-2"
+            className="flex items-center gap-2"
             style={{ animation: "fadeInUp 0.6s ease-out 0.3s both" }}
           >
-            <span className="w-10 h-[2px] bg-(--naruto_hair) inline-block" />
-            <span className="font-the-last-shuriken text-white/90 text-xl tracking-wide">
+            <span
+              className="inline-block bg-(--naruto_hair)"
+              style={{ width: isMobile ? "28px" : "40px", height: "2px" }}
+            />
+            <span
+              className="font-the-last-shuriken text-white/90 tracking-wide"
+              style={{ fontSize: isMobile ? "0.95rem" : "1.25rem" }}
+            >
               {displayText}
-              <span className="inline-block w-[2px] h-5 bg-(--naruto_hair) ml-1 align-middle animate-pulse" />
+              <span className="inline-block w-[2px] h-4 bg-(--naruto_hair) ml-1 align-middle animate-pulse" />
             </span>
           </div>
 
           {/* Short bio */}
           <p
-            className="text-(naruto_skin) text-[15px] max-w-[550px] text-base leading-relaxed mt-2 font-the-last-shuriken"
-            style={{ animation: "fadeInUp 0.6s ease-out 0.45s both" }}
+            className="text-base leading-relaxed font-the-last-shuriken"
+            style={{
+              color: "rgba(255,255,255,0.85)",
+              fontSize: isMobile ? "0.85rem" : "0.95rem",
+              maxWidth: isMobile ? "100%" : "550px",
+              animation: "fadeInUp 0.6s ease-out 0.45s both",
+            }}
           >
             Building modern web experiences with clean code and creative design.
             Turning ideas into pixel-perfect, performant applications.
@@ -202,21 +245,43 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div
-            className="flex items-center gap-4 mt-6 pointer-events-auto"
-            style={{ animation: "fadeInUp 0.6s ease-out 0.6s both" }}
+            className="flex items-center flex-wrap pointer-events-auto"
+            style={{
+              gap: isMobile ? "12px" : "16px",
+              marginTop: isMobile ? "8px" : "24px",
+              animation: "fadeInUp 0.6s ease-out 0.6s both",
+            }}
           >
             <a
               href="#contact"
-              className="px-8 py-3 bg-(--naruto_sage_red) text-white font-the-last-shuriken text-sm tracking-wider uppercase rounded-full
-                         hover:scale-105 transition-transform duration-300 no-underline cursor-pointer
-                         shadow-[0_4px_20px_rgba(155,34,48,0.4)]"
+              className="no-underline cursor-pointer transition-transform duration-300 hover:scale-105"
+              style={{
+                padding: isMobile ? "10px 24px" : "12px 32px",
+                backgroundColor: "var(--naruto_sage_red)",
+                color: "#fff",
+                fontFamily: "var(--font-the-last-shuriken)",
+                fontSize: isMobile ? "0.8rem" : "0.9rem",
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                borderRadius: "999px",
+                boxShadow: "0 4px 20px rgba(155,34,48,0.4)",
+              }}
             >
               Get in Touch
             </a>
             <a
               href="#projects"
-              className="px-8 py-3 border-2 border-(--naruto_hair) text-(--naruto_hair) font-the-last-shuriken text-sm tracking-wider uppercase rounded-full
-                         hover:bg-(--naruto_hair) hover:text-(--naruto_jumpsuit) transition-all duration-300 no-underline cursor-pointer"
+              className="no-underline cursor-pointer transition-all duration-300"
+              style={{
+                padding: isMobile ? "10px 24px" : "12px 32px",
+                border: "2px solid var(--naruto_hair)",
+                color: "var(--naruto_hair)",
+                fontFamily: "var(--font-the-last-shuriken)",
+                fontSize: isMobile ? "0.8rem" : "0.9rem",
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                borderRadius: "999px",
+              }}
             >
               View Work
             </a>
@@ -227,14 +292,8 @@ const Hero = () => {
       {/* ── Keyframes ── */}
       <style>{`
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes float {
           from { transform: translateY(0); }
