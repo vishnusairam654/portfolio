@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Typography, Stack, Grid, Fade, Collapse, Grow } from "@mui/material";
+import { Box, Typography, Stack, Grid, Fade, Collapse } from "@mui/material";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { GiNinjaStar } from "react-icons/gi";
 
@@ -78,7 +78,9 @@ const Footer = () => {
               cursor: "pointer",
               px: { xs: 4, md: 5 },
               py: 2,
-              backgroundColor: copied ? "var(--zoro_bandana)" : "var(--naruto_jumpsuit)",
+              backgroundColor: copied
+                ? "var(--zoro_bandana)"
+                : "var(--naruto_jumpsuit)",
               color: "#fff",
               fontFamily: "var(--font-the-last-shuriken)",
               fontSize: "1.2rem",
@@ -89,10 +91,14 @@ const Footer = () => {
               clipPath:
                 "polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
               transition: "var(--transition)",
-              boxShadow: copied ? "0 10px 30px rgba(26,107,60,0.4)" : "0 10px 30px rgba(246,108,45,0.4)",
+              boxShadow: copied
+                ? "0 10px 30px rgba(26,107,60,0.4)"
+                : "0 10px 30px rgba(246,108,45,0.4)",
               "&:hover": {
                 transform: "translateY(-4px)",
-                boxShadow: copied ? "0 15px 40px rgba(26,107,60,0.6)" : "0 15px 40px rgba(246,108,45,0.6)",
+                boxShadow: copied
+                  ? "0 15px 40px rgba(26,107,60,0.6)"
+                  : "0 15px 40px rgba(246,108,45,0.6)",
               },
             }}
           >
@@ -101,7 +107,14 @@ const Footer = () => {
         </Box>
 
         {/* Confirmation Text & Hidden Links */}
-        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box
+          sx={{
+            mt: 2,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Box sx={{ height: "24px", mb: 2 }}>
             <Fade in={copied}>
               <Typography
@@ -119,7 +132,12 @@ const Footer = () => {
           </Box>
 
           <Collapse in={showLinks}>
-            <Stack direction="row" spacing={3} justifyContent="center" alignItems="center">
+            <Stack
+              direction="row"
+              spacing={3}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Box
                 component="a"
                 href="https://github.com/vishnusairam654"
@@ -135,12 +153,16 @@ const Footer = () => {
                   backgroundColor: "rgba(255,255,255,0.05)",
                   color: "#A0AEC0",
                   transition: "var(--transition)",
-                  "&:hover": { backgroundColor: "var(--naruto_jumpsuit)", color: "#fff", transform: "scale(1.1)" }
+                  "&:hover": {
+                    backgroundColor: "var(--naruto_jumpsuit)",
+                    color: "#fff",
+                    transform: "scale(1.1)",
+                  },
                 }}
               >
                 <FaGithub size={24} />
               </Box>
-    
+
               <Box
                 component="a"
                 href="#"
@@ -156,7 +178,11 @@ const Footer = () => {
                   backgroundColor: "rgba(255,255,255,0.05)",
                   color: "#A0AEC0",
                   transition: "var(--transition)",
-                  "&:hover": { backgroundColor: "#0077b5", color: "#fff", transform: "scale(1.1)" }
+                  "&:hover": {
+                    backgroundColor: "#0077b5",
+                    color: "#fff",
+                    transform: "scale(1.1)",
+                  },
                 }}
               >
                 <FaLinkedin size={24} />
