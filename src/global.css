@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-njnaruto: 'njnaruto';
+  --font-the-last-shuriken: 'The Last Shuriken';
+  --font-midorima: 'Midorima';
+  --font-oswald: 'Oswald', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-qetod: 'Qetod';
+  --font-one-piece: 'one piece font';
+  --font-caesar-dressing: 'Caesar Dressing', cursive;
+}
+
+/* ─── Custom Fonts ────────────────────────────────────── */
+@font-face {
+  font-family: 'njnaruto';
+  src: url('./fonts/njnaruto.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Last Shuriken';
+  src: url('./fonts/The Last Shuriken.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* ─── Google Font Utilities ────────────────────────────── */
+.oswald-font {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playfair-font {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Midorima';
+  src: url('./fonts/Midorima-PersonalUse-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Qetod';
+  src: url('./fonts/Qetod.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'one piece font';
+  src: url('./fonts/one piece font.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* ─── Color Tokens ────────────────────────────────────── */
+:root {
+
+  /* Naruto */
+  --naruto_jumpsuit: #F66C2D;
+  --naruto_collar: #082C8C;
+  --naruto_hair: #E7E419;
+  --naruto_eyes: #4691CC;
+  --naruto_skin: #F7B59B;
+  --naruto_sage_red: #9B2230;
+
+  /* Sasuke */
+  --sasuke_shirt: #13386C;
+  --sasuke_belt: #817299;
+  --sasuke_sharingan: #AF1313;
+  --sasuke_susanoo: #6A3777;
+  --sasuke_trousers: #1F2533;
+  --sasuke_cloak: #090909;
+  --sasuke_cloak_lining: #817299;
+
+  /* Kakashi */
+  --kakashi_vest: #5E693F;
+  --kakashi_jumpsuit: #1B263B;
+  --kakashi_hair: #C0C0C0;
+  --kakashi_chidori: #A0E7E5;
+  --kakashi_sharingan: #B22222;
+  --kakashi_mask: #232B3E;
+
+  /* Itachi */
+  --itachi_cloak: #0F0F10;
+  --itachi_cloud_red: #8B0000;
+  --itachi_cloud_border: #FFFFFF;
+  --itachi_sharingan: #E63946;
+  --itachi_nail: #1D4D4F;
+  --itachi_skin: #F9E4D4;
+  --itachi_collar: #4A0E0E;
+
+  /* Hashirama */
+  --hashirama_armor: #7B1113;
+  --hashirama_undersuit: #1B1B1E;
+  --hashirama_wood: #5D4037;
+  --hashirama_leaves: #388E3C;
+  --hashirama_sage_mark: #9B2230;
+  --hashirama_skin: #E7BC91;
+
+  /* Madara */
+  --madara_armor: #9B2230;
+  --madara_undersuit: #101820;
+  --madara_hair: #050505;
+  --madara_skin: #F9E4D4;
+  --madara_mangekyo: #E63946;
+  --madara_rinnegan: #8E7CC3;
+  --madara_robe: #FFFFFF;
+  --madara_markings: #000000;
+
+  /* Hinata */
+  --hinata_jacket: #B2A2D3;
+  --hinata_jacket_trim: #4B3D60;
+  --hinata_hair: #161B33;
+  --hinata_byakugan: #DCD0FF;
+  --hinata_lionsfist: #A0E7E5;
+  --hinata_obi: #817299;
+  --hinata_skin: #FFF5EE;
+
+  /* ─── One Piece ───────────────────────────────────────── */
+
+  /* Luffy */
+  --luffy_vest: #CC1B1B;
+  --luffy_shorts: #0A2E6E;
+  --luffy_hat: #CC1B1B;
+  --luffy_skin: #F5C89A;
+  --luffy_gear5_hair: #FFFFFF;
+  --luffy_gear5_aura: #FFFDE7;
+  --luffy_scar: #E05555;
+
+  /* Zoro */
+  --zoro_bandana: #1A6B3C;
+  --zoro_haramaki: #1A6B3C;
+  --zoro_hair: #2ECC71;
+  --zoro_skin: #F0C27F;
+  --zoro_wado: #D0E8F0;
+  --zoro_sandai: #C8A86B;
+  --zoro_enma: #2C2C3E;
+
+  /* Nami */
+  --nami_hair: #F4A836;
+  --nami_top: #FF6B9D;
+  --nami_clima_tact: #D4AF37;
+  --nami_skin: #FDDCB5;
+  --nami_log_pose: #5BC8E8;
+  --nami_tattoo: #2E4DAB;
+
+  /* Sanji */
+  --sanji_suit: #1C1C2E;
+  --sanji_tie: #2C2C3E;
+  --sanji_hair: #F4D03F;
+  --sanji_skin: #F5C89A;
+  --sanji_ifrit_jambe: #FF6600;
+  --sanji_diable_jambe: #CC1B1B;
+  --sanji_hell_memories: #1A6B8A;
+
+  /* Usopp */
+  --usopp_overalls: #6B4226;
+  --usopp_hat: #D4A017;
+  --usopp_hair: #1A1A1A;
+  --usopp_skin: #8B5E3C;
+  --usopp_slingshot: #8B7355;
+  --usopp_pop_green: #3A7D44;
+  --usopp_goggles: #C0A060;
+
+  /* ─── Fonts ─────────────────────────────────────────── */
+  --font-njnaruto: 'njnaruto', sans-serif;
+  --font-the-last-shuriken: 'The Last Shuriken', sans-serif;
+  --font-midorima: 'Midorima', sans-serif;
+  --font-caesar-dressing: 'Caesar Dressing', cursive;
+
+  /* ─── Base ──────────────────────────────────────────── */
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ───────────────────────────────────────────── */
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050D1A;
+  color: #F0F6FF;
+  font-family: var(--font-midorima);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(166, 210, 229, 0.25);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050D1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--naruto_jumpsuit), var(--sasuke_sharingan));
+  border-radius: 99px;
+}
+
+/* ─── Hero Name Dual-Layer Text ─────────────────────── */
+.hero-name-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-name-stroke {
+  -webkit-text-stroke: 4px var(--naruto_hair);
+  color: transparent;
+}
+
+.hero-name-solid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 50% 0 0);
+  color: var(--naruto_hair);
+}
+
+/* ─── Polaroid Image Card ──────────────────────────── */
+.polaroid-card {
+  position: absolute;
+  background: #fff;
+  padding: 6px 6px 24px 6px;
+  border-radius: 3px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: none;
+}
+
+.polaroid-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
