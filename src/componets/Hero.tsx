@@ -18,6 +18,12 @@ const roles = [
   "Open Source Contributor",
 ];
 
+const mobileHighlights = [
+  { value: "10+", label: "Projects" },
+  { value: "3+", label: "Stacks" },
+  { value: "24/7", label: "Curiosity" },
+];
+
 const collageImages = [
   { src: img1, w: 200, h: 250, top: "1%", left: "2%", rotate: -10, z: 3 },
   { src: img2, w: 180, h: 220, top: "5%", left: "55%", rotate: 7, z: 5 },
@@ -138,11 +144,20 @@ const Hero = () => {
           absolute left-0 top-[50%] -translate-y-1/2
           w-screen z-10 flex flex-col justify-center
           pointer-events-none
-          ${isMobile ? "px-6 py-4" : "pl-[8%]"}
+          ${isMobile ? "px-5 py-4" : "pl-[8%]"}
         `}
-        style={{ height: isMobile ? "auto" : "45vh" }}
+        style={{
+          height: isMobile ? "100vh" : "45vh",
+          paddingTop: isMobile ? "84px" : undefined,
+        }}
       >
-        <div className="flex flex-col" style={{ gap: isMobile ? "14px" : "20px" }}>
+        <div
+          className="flex flex-col"
+          style={{
+            gap: isMobile ? "12px" : "20px",
+            maxWidth: isMobile ? "380px" : undefined,
+          }}
+        >
           {/* Greeting */}
           <p
             className="font-the-last-shuriken text-(--naruto_sage_red) tracking-widest uppercase"
@@ -242,6 +257,145 @@ const Hero = () => {
             Building modern web experiences with clean code and creative design.
             Turning ideas into pixel-perfect, performant applications.
           </p>
+
+          {isMobile && (
+            <div
+              className="relative w-full pointer-events-auto"
+              style={{ animation: "fadeInUp 0.6s ease-out 0.52s both" }}
+            >
+              <div
+                className="relative overflow-hidden rounded-[28px] border border-white/25"
+                style={{
+                  padding: "14px",
+                  background:
+                    "linear-gradient(160deg, rgba(11,26,47,0.82), rgba(129,114,153,0.28))",
+                  boxShadow: "0 18px 40px rgba(0,0,0,0.18)",
+                  backdropFilter: "blur(12px)",
+                }}
+              >
+                <div
+                  className="absolute top-3 left-4 right-4 h-20 rounded-full opacity-45"
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(231,228,25,0.55) 0%, transparent 72%)",
+                  }}
+                />
+
+                <div className="relative flex items-center justify-between gap-3">
+                  <div>
+                    <p
+                      className="font-the-last-shuriken uppercase tracking-[0.25em]"
+                      style={{
+                        fontSize: "0.62rem",
+                        color: "rgba(255,255,255,0.68)",
+                      }}
+                    >
+                      Mobile Snapshot
+                    </p>
+                    <p
+                      className="font-midorima"
+                      style={{
+                        fontSize: "1rem",
+                        color: "var(--naruto_hair)",
+                      }}
+                    >
+                      Creative developer mode
+                    </p>
+                  </div>
+                  <span
+                    className="font-the-last-shuriken uppercase"
+                    style={{
+                      fontSize: "0.62rem",
+                      padding: "6px 10px",
+                      borderRadius: "999px",
+                      color: "#fff",
+                      backgroundColor: "rgba(155,34,48,0.85)",
+                    }}
+                  >
+                    Available
+                  </span>
+                </div>
+
+                <div className="relative mt-4 mx-auto w-full max-w-[240px]">
+                  <div
+                    className="absolute inset-x-5 -bottom-3 h-10 rounded-full blur-2xl"
+                    style={{ background: "rgba(27,38,59,0.9)" }}
+                  />
+                  <img
+                    src={imgMaster}
+                    alt="Vishnu Sai Ram portrait"
+                    className="relative z-10 w-full h-[220px] object-cover rounded-[22px]"
+                    style={{
+                      border: "3px solid rgba(255,255,255,0.16)",
+                      boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
+                    }}
+                  />
+                  <div
+                    className="absolute -left-2 bottom-4 z-20 rounded-full"
+                    style={{
+                      padding: "7px 12px",
+                      backgroundColor: "rgba(255,255,255,0.95)",
+                      color: "var(--kakashi_jumpsuit)",
+                      fontFamily: "var(--font-the-last-shuriken)",
+                      fontSize: "0.62rem",
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    React + TypeScript
+                  </div>
+                  <div
+                    className="absolute -right-2 top-4 z-20 rounded-full"
+                    style={{
+                      padding: "7px 12px",
+                      backgroundColor: "rgba(231,228,25,0.92)",
+                      color: "var(--itachi_cloak)",
+                      fontFamily: "var(--font-the-last-shuriken)",
+                      fontSize: "0.62rem",
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    UI First
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 mt-4">
+                  {mobileHighlights.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-[18px] text-center"
+                      style={{
+                        padding: "10px 6px",
+                        backgroundColor: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.14)",
+                      }}
+                    >
+                      <p
+                        className="font-midorima"
+                        style={{
+                          fontSize: "1rem",
+                          lineHeight: 1.1,
+                          color: "var(--naruto_hair)",
+                        }}
+                      >
+                        {item.value}
+                      </p>
+                      <p
+                        className="font-the-last-shuriken uppercase"
+                        style={{
+                          marginTop: "4px",
+                          fontSize: "0.55rem",
+                          letterSpacing: "0.18em",
+                          color: "rgba(255,255,255,0.72)",
+                        }}
+                      >
+                        {item.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* CTA Buttons */}
           <div
