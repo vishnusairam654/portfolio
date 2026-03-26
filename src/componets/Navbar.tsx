@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import navLogo from "../assets/logos/nav_logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = () => {
       {/* Left: Logo */}
       <div className="flex items-center gap-3">
         <img
-          src="src/assets/logos/nav_logo.png"
+          src={navLogo}
           alt="logo"
           className={`transition-all duration-500 ${scrolled ? "h-10" : "h-14"}`}
         />
