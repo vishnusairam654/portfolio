@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Box, Typography, Stack, Grid, Fade } from "@mui/material";
+import { Box, Typography, Stack, Grid, Fade, Collapse, Grow } from "@mui/material";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { GiNinjaStar } from "react-icons/gi";
 
 const Footer = () => {
   const [copied, setCopied] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
 
   const navLinks = [
     { name: "HOME", href: "#" },
@@ -58,7 +59,8 @@ const Footer = () => {
           READY FOR A <br />
           <span style={{ color: "var(--sanji_hair)" }}>NEW MISSION?</span>
         </Typography>
-        <Stack direction="row" spacing={{ xs: 2, md: 3 }} justifyContent="center" alignItems="center">
+
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Box
             component="a"
             href="mailto:vishnusairam654@gmail.com"
@@ -66,6 +68,7 @@ const Footer = () => {
               e.preventDefault();
               navigator.clipboard.writeText("vishnusairam654@gmail.com");
               setCopied(true);
+              setShowLinks(true);
               setTimeout(() => setCopied(false), 3000);
             }}
             sx={{
@@ -73,7 +76,7 @@ const Footer = () => {
               alignItems: "center",
               gap: 1.5,
               cursor: "pointer",
-              px: { xs: 3, md: 5 },
+              px: { xs: 4, md: 5 },
               py: 2,
               backgroundColor: copied ? "var(--zoro_bandana)" : "var(--naruto_jumpsuit)",
               color: "#fff",
@@ -95,65 +98,71 @@ const Footer = () => {
           >
             <GiNinjaStar size={20} /> {copied ? "COPIED!" : "SUMMON ME"}
           </Box>
+        </Box>
 
-          <Box
-            component="a"
-            href="https://github.com/vishnusairam654"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: { xs: "48px", md: "54px" },
-              height: { xs: "48px", md: "54px" },
-              borderRadius: "50%",
-              backgroundColor: "rgba(255,255,255,0.05)",
-              color: "#A0AEC0",
-              transition: "var(--transition)",
-              "&:hover": { backgroundColor: "var(--naruto_jumpsuit)", color: "#fff", transform: "scale(1.1)" }
-            }}
-          >
-            <FaGithub size={24} />
+        {/* Confirmation Text & Hidden Links */}
+        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Box sx={{ height: "24px", mb: 2 }}>
+            <Fade in={copied}>
+              <Typography
+                sx={{
+                  fontFamily: "var(--font-oswald)",
+                  color: "var(--zoro_bandana)",
+                  fontSize: "0.85rem",
+                  letterSpacing: "2px",
+                  fontWeight: "bold",
+                }}
+              >
+                EMAIL COPIED TO CLIPBOARD
+              </Typography>
+            </Fade>
           </Box>
 
-          <Box
-            component="a"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: { xs: "48px", md: "54px" },
-              height: { xs: "48px", md: "54px" },
-              borderRadius: "50%",
-              backgroundColor: "rgba(255,255,255,0.05)",
-              color: "#A0AEC0",
-              transition: "var(--transition)",
-              "&:hover": { backgroundColor: "#0077b5", color: "#fff", transform: "scale(1.1)" }
-            }}
-          >
-            <FaLinkedin size={24} />
-          </Box>
-        </Stack>
-
-        {/* Confirmation Text container with fixed height to prevent layout shift */}
-        <Box sx={{ minHeight: "24px", mt: 2 }}>
-          <Fade in={copied}>
-            <Typography
-              sx={{
-                fontFamily: "var(--font-oswald)",
-                color: "var(--zoro_bandana)",
-                fontSize: "0.85rem",
-                letterSpacing: "2px",
-                fontWeight: "bold",
-              }}
-            >
-              EMAIL COPIED TO CLIPBOARD
-            </Typography>
-          </Fade>
+          <Collapse in={showLinks}>
+            <Stack direction="row" spacing={3} justifyContent="center" alignItems="center">
+              <Box
+                component="a"
+                href="https://github.com/vishnusairam654"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: { xs: "48px", md: "54px" },
+                  height: { xs: "48px", md: "54px" },
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  color: "#A0AEC0",
+                  transition: "var(--transition)",
+                  "&:hover": { backgroundColor: "var(--naruto_jumpsuit)", color: "#fff", transform: "scale(1.1)" }
+                }}
+              >
+                <FaGithub size={24} />
+              </Box>
+    
+              <Box
+                component="a"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: { xs: "48px", md: "54px" },
+                  height: { xs: "48px", md: "54px" },
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  color: "#A0AEC0",
+                  transition: "var(--transition)",
+                  "&:hover": { backgroundColor: "#0077b5", color: "#fff", transform: "scale(1.1)" }
+                }}
+              >
+                <FaLinkedin size={24} />
+              </Box>
+            </Stack>
+          </Collapse>
         </Box>
       </Box>
 
