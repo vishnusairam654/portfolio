@@ -18,6 +18,7 @@ import projNxtWatch from "../assets/project_images/nxtwatch.png";
 import projStockPulse from "../assets/project_images/stockpulse.png";
 import projStoreIt from "../assets/project_images/store_it.png";
 import projWanderWay from "../assets/project_images/wander_way.png";
+import projBookified from "../assets/project_images/voiceOfWords.png";
 
 /* ── Hook ── */
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -54,9 +55,9 @@ interface Project {
 
 /* ── Rank Config ── */
 const RC: Record<Rank, { color: string; bg: string; shadow: string; solidShadow: string; tierLabel: string }> = {
-  S: { color: "var(--naruto_sage_red)", bg: "rgba(155,34,48,0.07)",  shadow: "rgba(155,34,48,0.22)",  solidShadow: "rgba(155,34,48,0.38)",  tierLabel: "KAGE-LEVEL" },
-  A: { color: "var(--sasuke_sharingan)", bg: "rgba(175,19,19,0.06)", shadow: "rgba(175,19,19,0.18)",  solidShadow: "rgba(175,19,19,0.32)",  tierLabel: "JOUNIN-LEVEL" },
-  B: { color: "var(--naruto_collar)",    bg: "rgba(8,44,140,0.06)",  shadow: "rgba(8,44,140,0.18)",   solidShadow: "rgba(8,44,140,0.32)",   tierLabel: "CHUNIN-LEVEL" },
+  S: { color: "var(--naruto_sage_red)", bg: "rgba(155,34,48,0.07)", shadow: "rgba(155,34,48,0.22)", solidShadow: "rgba(155,34,48,0.38)", tierLabel: "KAGE-LEVEL" },
+  A: { color: "var(--sasuke_sharingan)", bg: "rgba(175,19,19,0.06)", shadow: "rgba(175,19,19,0.18)", solidShadow: "rgba(175,19,19,0.32)", tierLabel: "JOUNIN-LEVEL" },
+  B: { color: "var(--naruto_collar)", bg: "rgba(8,44,140,0.06)", shadow: "rgba(8,44,140,0.18)", solidShadow: "rgba(8,44,140,0.32)", tierLabel: "CHUNIN-LEVEL" },
 };
 
 /* ── Projects Data ── */
@@ -79,19 +80,27 @@ const projects: Project[] = [
     rank: "A", emoji: "✈️", title: "Wander Way", subtitle: "AI Travel Planner",
     description: "AI-powered itinerary generator that creates personalized, budget-optimized travel plans with day-wise schedules and detailed cost breakdowns.",
     tech: ["Next.js", "React", "Node.js", "LLM APIs", "TailwindCSS"],
-    github: "#", live: "#", status: "complete", image: projWanderWay,
+    github: "https://github.com/vishnusairam654/WanderWay.git", live: "#", status: "complete", image: projWanderWay,
+  },
+  {
+    rank: "A", emoji: "🎙️", title: "Bookified", subtitle: "AI-Powered Document Conversation Platform",
+    description: "Production-grade app enabling users to upload any document (PDF, DOCX, TXT, XML) and hold natural voice or text conversations about it with an AI assistant — featuring per-document AI summaries (key ideas, concepts, highlights) with PDF export, smart search, and AI-generated book covers, all behind Clerk-authenticated routes.",
+    tech: ["Next.js", "React 19", "TypeScript", "MongoDB", "Clerk", "Vapi AI", "Vercel Blob", "TailwindCSS", "ShadCN UI", "Framer Motion"],
+    github: "https://github.com/vishnusairam654/voiceOfWords",
+    live: "https://voice-of-words.vercel.app/",
+    status: "complete", image: projBookified,
   },
   {
     rank: "A", emoji: "🎬", title: "CineMetrics", subtitle: "Movie Analytics Engine",
     description: "Data-driven movie discovery platform that visualizes trends, ratings, and comparisons through interactive dashboards.",
     tech: ["React.js", "Node.js", "REST APIs", "Data Visualization"],
-    github: "https://github.com/vishnusairam654/movie_app.git", live: "#", status: "complete", image: projCinemaetrics,
+    github: "https://github.com/vishnusairam654/movie_app.git", live: "https://cinemetrics-flax.vercel.app/", status: "complete", image: projCinemaetrics,
   },
   {
     rank: "A", emoji: "📺", title: "Nxt Watch", subtitle: "Video Streaming Platform",
     description: "Full-featured YouTube-like app with authentication, video playback, trending feeds, and saved videos functionality.",
     tech: ["React.js", "Styled-Components", "React Router", "Context API", "JWT"],
-    github: "https://github.com/vishnusairam654/nxtwatch.git", live: "#", status: "complete", image: projNxtWatch,
+    github: "https://github.com/vishnusairam654/NxtWatch_new.git", live: "https://nxtwatch-qzyh.vercel.app/", status: "complete", image: projNxtWatch,
   },
   {
     rank: "B", emoji: "🏦", title: "EBank", subtitle: "Secure Auth System",
@@ -375,10 +384,10 @@ const Projects = () => {
   const bRank = visible.filter((p) => p.rank === "B");
 
   const filters: { key: FilterKey; label: string; color: string }[] = [
-    { key: "ALL", label: "ALL",    color: "var(--naruto_jumpsuit)" },
-    { key: "S",   label: "★★★ S", color: "var(--naruto_sage_red)" },
-    { key: "A",   label: "★★ A",  color: "var(--sasuke_sharingan)" },
-    { key: "B",   label: "★ B",   color: "var(--naruto_collar)" },
+    { key: "ALL", label: "ALL", color: "var(--naruto_jumpsuit)" },
+    { key: "S", label: "★★★ S", color: "var(--naruto_sage_red)" },
+    { key: "A", label: "★★ A", color: "var(--sasuke_sharingan)" },
+    { key: "B", label: "★ B", color: "var(--naruto_collar)" },
   ];
 
   return (
@@ -460,7 +469,7 @@ const Projects = () => {
           <RankHeader rank="A" color="var(--sasuke_sharingan)" />
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {aRank.map((proj, i) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={proj.title}>
+              <Grid size={{ xs: 12, sm: 6, md: 6 }} key={proj.title}>
                 <ProjectCard proj={proj} isVisible={isVisible} delay={i * 150} />
               </Grid>
             ))}
