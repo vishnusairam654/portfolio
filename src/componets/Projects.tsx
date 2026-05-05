@@ -80,7 +80,7 @@ const projects: Project[] = [
     rank: "A", emoji: "✈️", title: "Wander Way", subtitle: "AI Travel Planner",
     description: "AI-powered itinerary generator that creates personalized, budget-optimized travel plans with day-wise schedules and detailed cost breakdowns.",
     tech: ["Next.js", "React", "Node.js", "LLM APIs", "TailwindCSS"],
-    github: "https://github.com/vishnusairam654/WanderWay.git", live: "#", status: "complete", image: projWanderWay,
+    github: "hhttps://github.com/vishnusairam654/WanderWay.git", live: "https://wander-way-weld.vercel.app/", status: "complete", image: projWanderWay,
   },
   {
     rank: "A", emoji: "🎙️", title: "Bookified", subtitle: "AI-Powered Document Conversation Platform",
