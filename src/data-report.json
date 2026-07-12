@@ -1,0 +1,139 @@
+{
+  "navbar": {
+    "brandName": "Vishnu's View",
+    "links": [
+      { "name": "Home", "href": "#" },
+      { "name": "About", "href": "#about" },
+      { "name": "Projects", "href": "#projects" },
+      { "name": "Contact", "href": "#contact" }
+    ],
+    "socialLinks": [
+      { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/vishnu654/" },
+      { "platform": "GitHub", "url": "https://github.com/vishnusairam654" }
+    ]
+  },
+  "hero": {
+    "greeting": "HELLO, I'M",
+    "firstName": "VISHNU",
+    "lastName": "SAI RAM",
+    "roles": [
+      "Full-Stack Developer",
+      "UI/UX Enthusiast",
+      "Open Source Contributor"
+    ],
+    "bio": "Building modern web experiences with clean code and creative design. Turning ideas into pixel-perfect, performant applications.",
+    "buttons": [
+      { "text": "GET IN TOUCH", "link": "#contact" },
+      { "text": "VIEW WORK", "link": "#projects" }
+    ],
+    "monogramText": "RAM.",
+    "monogramSubtitle": "CREATIVE DEV"
+  },
+  "about": {
+    "sectionLabel": "WHO AM I",
+    "title": "THE SHINOBI BEHIND THE SCREEN",
+    "bio": "I'm a Frontend Developer and UI/UX enthusiast. Not just a developer, but a shinobi of the web, trained through real missions, failed builds, and late-night debugging sessions.",
+    "certifications": [
+      "Google UI/UX",
+      "Microsoft AI",
+      "NxtWave Python",
+      "NxtWave Full Stack"
+    ],
+    "stats": [
+      { "label": "Missions Completed", "value": "10+" },
+      { "label": "Jutsu Mastered", "value": "20+" },
+      { "label": "Chakra Capacity", "value": "100%" }
+    ],
+    "skills": {
+      "Frontend Technologies": [
+        "Next.js (App Router)", "React.js", "Redux Toolkit", "Tailwind CSS", "Context API", "HTML5 & CSS3"
+      ],
+      "Programming Languages": [
+        "TypeScript", "Python", "SQL", "C++", "JavaScript (ES6+)"
+      ],
+      "Backend & Real-Time": [
+        "FastAPI", "Node.js", "Express.js", "WebRTC Voice Sockets", "REST APIs"
+      ],
+      "Databases & Infra": [
+        "PostgreSQL", "Redis Caching", "MongoDB / Mongoose", "Appwrite Engine", "Docker", "Vercel Platforms"
+      ],
+      "Tooling & Automation": [
+        "Git & GitHub", "CI/CD (GitHub Actions)", "Linux Environments", "Postman API Suite"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "rank": "S",
+      "title": "StoreIt",
+      "subtitle": "Cloud Storage Platform",
+      "description": "Production-grade Google Drive–like app enabling secure file upload, management, sharing, and real-time storage tracking — built on Next.js 15 & React 19 with a polished, fully responsive UI.",
+      "technologies": ["Next.js 15", "React 19", "TypeScript", "Appwrite", "TailwindCSS", "ShadCN UI"],
+      "github": "https://github.com/vishnusairam654/StoreIt.git",
+      "live": "https://store-it-now.vercel.app/"
+    },
+    {
+      "rank": "S",
+      "title": "Creative Haven",
+      "subtitle": "Privacy-First Creator Platform",
+      "description": "Pseudonymous social platform for creators to showcase work and collaborate locally — engineered with geospatial PostGIS queries, multi-layer Redis caching, and full TypeScript coverage.",
+      "technologies": ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "PostGIS", "Redis", "TailwindCSS"],
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "rank": "A",
+      "title": "Wander Way",
+      "subtitle": "AI Travel Planner",
+      "description": "AI-powered itinerary generator that creates personalized, budget-optimized travel plans with day-wise schedules and detailed cost breakdowns.",
+      "technologies": ["Next.js", "React", "Node.js", "LLM APIs", "TailwindCSS"],
+      "github": "https://github.com/vishnusairam654/WanderWay.git",
+      "live": "https://wander-way-weld.vercel.app/"
+    },
+    {
+      "rank": "A",
+      "title": "Voice of Words",
+      "subtitle": "AI-Powered Document Conversation Platform",
+      "description": "Production-grade app enabling users to upload any document (PDF, DOCX, TXT, XML) and hold natural voice or text conversations about it with an AI assistant — featuring per-document AI summaries (key ideas, concepts, highlights) with PDF export, smart search, and AI-generated book covers, all behind Clerk-authenticated routes.",
+      "technologies": ["Next.js", "React 19", "TypeScript", "MongoDB", "Clerk", "Vapi AI", "Vercel Blob", "TailwindCSS", "ShadCN UI", "Framer Motion"],
+      "github": "https://github.com/vishnusairam654/voiceOfWords",
+      "live": "https://voice-of-words.vercel.app/"
+    },
+    {
+      "rank": "A",
+      "title": "CineMetrics",
+      "subtitle": "Movie Analytics Engine",
+      "description": "Data-driven movie discovery platform that visualizes trends, ratings, and comparisons through interactive dashboards.",
+      "technologies": ["React.js", "Node.js", "REST APIs", "Data Visualization"],
+      "github": "https://github.com/vishnusairam654/movie_app.git",
+      "live": "https://cinemetrics-flax.vercel.app/"
+    },
+    {
+      "rank": "A",
+      "title": "Nxt Watch",
+      "subtitle": "Video Streaming Platform",
+      "description": "Full-featured YouTube-like app with authentication, video playback, trending feeds, and saved videos functionality.",
+      "technologies": ["React.js", "Styled-Components", "React Router", "Context API", "JWT"],
+      "github": "https://github.com/vishnusairam654/NxtWatch_new.git",
+      "live": "https://nxtwatch-qzyh.vercel.app/"
+    },
+    {
+      "rank": "B",
+      "title": "EBank",
+      "subtitle": "Secure Auth System",
+      "description": "Banking-style authentication system featuring JWT login, protected routes, and secure session management.",
+      "technologies": ["React.js", "JWT", "REST API", "React Router"],
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "rank": "B",
+      "title": "StockPulse",
+      "subtitle": "Stock Tracking Dashboard",
+      "description": "Real-time stock market tracker with search, watchlist, and dynamic price visualization.",
+      "technologies": ["Next.js", "React", "REST APIs", "TailwindCSS"],
+      "github": "#",
+      "live": "#"
+    }
+  ]
+}

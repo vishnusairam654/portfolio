@@ -1,50 +1,31 @@
 import { useEffect, useState } from "react";
+import { Box, Typography, Stack, Fade, Slide, Grow } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-import img1 from "../assets/images/image_1.png";
-import img2 from "../assets/images/image_2.png";
-import img3 from "../assets/images/image_3.png";
-import img4 from "../assets/images/image_4.png";
-import img5 from "../assets/images/image_5.png";
-import img6 from "../assets/images/image_6.png";
-import img7 from "../assets/images/image_7.png";
-import img8 from "../assets/images/image_8.png";
-import imgMaster from "../assets/images/image_master.png";
-import imgMaster2 from "../assets/images/image_master2.png";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const roles = [
-  "Full-Stack Developer",
-  "UI/UX Enthusiast",
-  "Open Source Contributor",
+  "Full-Stack Engineer",
+  "UX/UI Architect",
+  "AI Systems Builder",
 ];
 
-const mobileHighlights = [
-  { value: "10+", label: "Projects" },
-  { value: "3+", label: "Stacks" },
-  { value: "24/7", label: "Curiosity" },
-];
-
-const collageImages = [
-  { src: img1, w: 200, h: 250, top: "1%", left: "2%", rotate: -10, z: 3 },
-  { src: img2, w: 180, h: 220, top: "5%", left: "55%", rotate: 7, z: 5 },
-  { src: imgMaster, w: 300, h: 360, top: "22%", left: "25%", rotate: 0, z: 10 },
-  { src: img3, w: 210, h: 160, top: "35%", left: "62%", rotate: -6, z: 6 },
-  { src: img4, w: 180, h: 210, top: "40%", left: "5%", rotate: 12, z: 4 },
-  { src: img5, w: 200, h: 200, top: "70%", left: "55%", rotate: -8, z: 1 },
-  { src: img6, w: 175, h: 170, top: "50%", left: "20%", rotate: 10, z: 10 },
-  { src: img7, w: 200, h: 250, top: "80%", left: "75%", rotate: -14, z: 7 },
-  { src: img8, w: 190, h: 180, top: "1%", left: "32%", rotate: 5, z: 8 },
-  { src: imgMaster2, w: 450, h: 300, top: "75%", left: "10%", rotate: 0, z: 11 },
+const marqueeItems = [
+  "React", "TypeScript", "Node.js", "Next.js", "MongoDB",
+  "Tailwind", "MUI", "Figma", "Git", "Firebase"
 ];
 
 const Hero = () => {
   const isMobile = useMediaQuery("(max-width: 900px)");
-
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Typewriter effect
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  /* ── Typewriter effect ── */
   useEffect(() => {
     const currentRole = roles[roleIndex];
     let timeout: ReturnType<typeof setTimeout>;
@@ -70,391 +51,165 @@ const Hero = () => {
   }, [displayText, isDeleting, roleIndex]);
 
   return (
-    <section
+    <Box
       id="home"
-      className="absolute top-0 left-0 w-screen h-screen bg-(--naruto_jumpsuit) overflow-hidden"
+      sx={{
+        width: "100vw",
+        minHeight: "100vh",
+        backgroundColor: "#FDF8F5",
+        backgroundImage: `
+          radial-gradient(#e2d5c4 1px, transparent 1px),
+          linear-gradient(135deg, rgba(246,108,45,0.12) 0%, rgba(244,208,63,0.12) 25%, rgba(91,200,232,0.12) 50%, rgba(106,55,119,0.12) 75%, rgba(26,107,60,0.12) 100%)
+        `,
+        backgroundSize: "20px 20px, 100% 100%",
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+        overflow: "hidden",
+        pt: { xs: 12, md: 16 }, // Space for navbar
+        pb: { xs: 12, md: 10 },
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "150px",
+          background: "linear-gradient(to bottom, transparent, rgba(253,248,245, 1))",
+          pointerEvents: "none",
+          zIndex: 5,
+        },
+      }}
     >
-      {/* ── Decorative background elements ── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full opacity-15"
-          style={{
-            background:
-              "radial-gradient(circle, var(--naruto_hair) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute bottom-[15%] -left-[5%] w-[300px] h-[300px] rounded-full opacity-10"
-          style={{
-            background:
-              "radial-gradient(circle, var(--naruto_sage_red) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(var(--naruto_hair) 1px, transparent 1px),
-                              linear-gradient(90deg, var(--naruto_hair) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-(--naruto_hair) opacity-20"
-            style={{
-              top: `${15 + i * 18}%`,
-              right: `${5 + i * 7}%`,
-              animation: `float ${3 + i * 0.5}s ease-in-out infinite alternate`,
-              animationDelay: `${i * 0.3}s`,
-            }}
-          />
-        ))}
-      </div>
+       <Box sx={{
+         flex: 1,
+         display: "flex",
+         flexDirection: { xs: "column", md: "row" },
+         alignItems: "center",
+         justifyContent: "center",
+         maxWidth: "1400px",
+         margin: "0 auto",
+         px: { xs: 3, md: "6%" },
+         gap: { xs: 6, md: 4 },
+         width: "100%",
+         zIndex: 1,
+       }}>
+         {/* ── Left Text Col ── */}
+         <Box sx={{ flex: 1, maxWidth: { xs: "100%", md: "680px" }, textAlign: { xs: "center", md: "left" } }}>
+           <Fade in={isVisible} timeout={800}>
+             <Typography sx={{ fontFamily: "var(--font-oswald)", color: "var(--naruto_collar)", letterSpacing: "3px", mb: 2, fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" }, gap: 2 }}>
+               <Box component="span" sx={{ width: 40, height: 2, backgroundColor: "var(--naruto_sage_red)" }} />
+               HELLO, I'M
+             </Typography>
+           </Fade>
 
-      {/* ── Image Collage — desktop only ── */}
-      {!isMobile && (
-        <div
-          className="absolute top-[50%] right-0 -translate-y-1/2 w-[60vw] h-[60vh] z-5 pointer-events-auto overflow-visible"
-          style={{ animation: "fadeInUp 0.8s ease-out 0.4s both" }}
-        >
-          {collageImages.map((img, i) => (
-            <div
-              key={i}
-              className="polaroid-card"
-              style={{
-                width: img.w,
-                height: img.h + 24,
-                top: img.top,
-                left: img.left,
-                transform: `rotate(${img.rotate}deg)`,
-                zIndex: img.z,
-                animation: `fadeInUp 0.6s ease-out ${0.5 + i * 0.12}s both`,
-              }}
-            >
-              <img src={img.src} alt={`Project ${i + 1}`} />
-            </div>
-          ))}
-        </div>
-      )}
+           <Slide direction="up" in={isVisible} timeout={1000}>
+             <Box>
+               <Typography variant="h1" sx={{ fontFamily: "var(--font-midorima)", fontSize: { xs: "3rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem" }, lineHeight: 1, color: "var(--itachi_cloak)", mb: -1 }}>
+                 VISHNU
+               </Typography>
+               <Typography variant="h1" sx={{ fontFamily: "var(--font-midorima)", fontSize: { xs: "3rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem" }, lineHeight: 1, color: "var(--naruto_jumpsuit)" }}>
+                 SAI RAM<Box component="span" sx={{ color: "var(--naruto_sage_red)" }}>.</Box>
+               </Typography>
+             </Box>
+           </Slide>
 
-      {/* ── Main text content ── */}
-      <div
-        className={`
-          absolute left-0 top-[50%] -translate-y-1/2
-          w-screen z-10 flex flex-col justify-center
-          pointer-events-none
-          ${isMobile ? "px-5 py-4" : "pl-[8%]"}
-        `}
-        style={{
-          height: isMobile ? "100vh" : "45vh",
-          paddingTop: isMobile ? "84px" : undefined,
-        }}
-      >
-        <div
-          className="flex flex-col"
-          style={{
-            gap: isMobile ? "12px" : "20px",
-            maxWidth: isMobile ? "380px" : undefined,
-          }}
-        >
-          {/* Greeting */}
-          <p
-            className="font-the-last-shuriken text-(--naruto_sage_red) tracking-widest uppercase"
-            style={{
-              fontSize: isMobile ? "1rem" : "1.5rem",
-              animation: "fadeInUp 0.6s ease-out both",
-            }}
-          >
-            I'm
-          </p>
+           <Fade in={isVisible} timeout={1400}>
+             <Typography sx={{ fontFamily: "var(--font-the-last-shuriken)", fontSize: { xs: "1.2rem", md: "1.6rem" }, color: "var(--itachi_cloak)", mt: 3, mb: 2, display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" }, gap: 1.5 }}>
+               <Box component="span" sx={{ width: 30, height: 2, backgroundColor: "var(--itachi_cloak)", flexShrink: 0, display: { xs: 'none', sm: 'block' } }} />
+               {displayText}
+               <Box component="span" sx={{ width: 2, height: "1.1em", backgroundColor: "var(--naruto_jumpsuit)", ml: 0.5, animation: "cursorBlink 0.8s step-end infinite", '@keyframes cursorBlink': { '0%, 100%': { opacity: 1 }, '50%': { opacity: 0 } } }} />
+             </Typography>
+           </Fade>
 
-          {/* Name */}
-          <div
-            className="hero-name-wrapper font-midorima leading-[0.9] whitespace-nowrap"
-            style={{
-              fontSize: isMobile
-                ? "clamp(38px, 9vw, 58px)"
-                : "clamp(80px, 12vw, 170px)",
-              animation: "fadeInUp 0.6s ease-out 0.15s both",
-            }}
-          >
-            {isMobile ? (
-              /* Mobile: simple solid name, no dual-layer clip trick */
-              <span style={{ color: "var(--naruto_hair)" }}>
-                Vishnu Sai Ram
-                <span style={{ color: "var(--naruto_sage_red)" }}>.</span>
-              </span>
-            ) : (
-              /* Desktop: dual-layer stroke + solid clip */
-              <>
-                <span className="hero-name-stroke">Vishnu Sai Ram</span>
-                <span className="hero-name-solid" aria-hidden="true">
-                  Vishnu{" "}
-                  <span
-                    className="text-transparent"
-                    style={{ color: "transparent" }}
-                  >
-                    Sai
-                  </span>{" "}
-                  Ram
-                </span>
-                <span className="text-(--naruto_sage_red)">.</span>
-              </>
-            )}
+           <Fade in={isVisible} timeout={1600}>
+             <Typography sx={{ fontFamily: "var(--font-midorima)", fontSize: { xs: "0.95rem", md: "1.1rem" }, color: "#4A5568", lineHeight: 1.8, maxWidth: "480px", mx: { xs: "auto", md: 0 }, mb: 4 }}>
+               I build data-intensive backend systems, resilient AI pipelines, and intuitive interfaces. Bridging the gap between deterministic databases and non-deterministic AI through deliberate engineering.
+             </Typography>
+           </Fade>
 
-            {/* Handwritten underline */}
-            <svg
-              viewBox="0 0 300 12"
-              className="block mt-2"
-              style={{
-                width: isMobile ? "min(100%, 260px)" : "clamp(300px, 60vw, 650px)",
-                height: "16px",
-                marginLeft: isMobile ? "0" : "auto",
-              }}
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M5 8 Q30 2, 55 7 T105 6 T155 8 T205 5 T255 7 T295 5"
-                fill="none"
-                stroke="var(--sasuke_belt)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="hero-underline"
-              />
-            </svg>
-          </div>
-
-          {/* Typewriter role */}
-          <div
-            className="flex items-center gap-2"
-            style={{ animation: "fadeInUp 0.6s ease-out 0.3s both" }}
-          >
-            <span
-              className="inline-block bg-(--naruto_hair)"
-              style={{ width: isMobile ? "28px" : "40px", height: "2px" }}
-            />
-            <span
-              className="font-the-last-shuriken text-white/90 tracking-wide"
-              style={{ fontSize: isMobile ? "0.95rem" : "1.25rem" }}
-            >
-              {displayText}
-              <span className="inline-block w-[2px] h-4 bg-(--naruto_hair) ml-1 align-middle animate-pulse" />
-            </span>
-          </div>
-
-          {/* Short bio */}
-          <p
-            className="text-base leading-relaxed font-the-last-shuriken"
-            style={{
-              color: "rgba(255,255,255,0.85)",
-              fontSize: isMobile ? "0.85rem" : "0.95rem",
-              maxWidth: isMobile ? "100%" : "550px",
-              animation: "fadeInUp 0.6s ease-out 0.45s both",
-            }}
-          >
-            Building modern web experiences with clean code and creative design.
-            Turning ideas into pixel-perfect, performant applications.
-          </p>
-
-          {isMobile && (
-            <div
-              className="relative w-full pointer-events-auto"
-              style={{ animation: "fadeInUp 0.6s ease-out 0.52s both" }}
-            >
-              <div
-                className="relative overflow-hidden rounded-[28px] border border-white/25"
-                style={{
-                  padding: "14px",
-                  background:
-                    "linear-gradient(160deg, rgba(11,26,47,0.82), rgba(129,114,153,0.28))",
-                  boxShadow: "0 18px 40px rgba(0,0,0,0.18)",
-                  backdropFilter: "blur(12px)",
-                }}
-              >
-                <div
-                  className="absolute top-3 left-4 right-4 h-20 rounded-full opacity-45"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(231,228,25,0.55) 0%, transparent 72%)",
+           <Grow in={isVisible} timeout={1800}>
+             <Stack direction="row" spacing={2} justifyContent={{ xs: "center", md: "flex-start" }} flexWrap="wrap" useFlexGap sx={{ gap: 2 }}>
+                <Box
+                  component="a"
+                  href="#contact"
+                  sx={{
+                    display: "inline-flex", alignItems: "center", gap: 1, px: 4, py: 1.5,
+                    backgroundColor: "var(--naruto_sage_red)", color: "#fff", border: "2px solid var(--naruto_sage_red)",
+                    fontFamily: "var(--font-the-last-shuriken)", fontSize: "0.9rem", letterSpacing: "1.5px", textTransform: "uppercase",
+                    borderRadius: "999px", textDecoration: "none", boxShadow: "4px 4px 0px var(--itachi_cloak)",
+                    transition: "var(--transition)",
+                    "&:hover": { transform: "translate(-2px, -2px)", boxShadow: "6px 6px 0px var(--itachi_cloak)", backgroundColor: "#c0233a" }
                   }}
-                />
+                >
+                  GET IN TOUCH <ArrowForwardIcon fontSize="small" />
+                </Box>
+                <Box
+                  component="a"
+                  href="#projects"
+                  sx={{
+                    display: "inline-flex", alignItems: "center", gap: 1, px: 4, py: 1.5,
+                    backgroundColor: "#fff", color: "var(--itachi_cloak)", border: "2px solid var(--itachi_cloak)",
+                    fontFamily: "var(--font-the-last-shuriken)", fontSize: "0.9rem", letterSpacing: "1.5px", textTransform: "uppercase",
+                    borderRadius: "999px", textDecoration: "none", boxShadow: "4px 4px 0px var(--itachi_cloak)",
+                    transition: "var(--transition)",
+                    "&:hover": { transform: "translate(-2px, -2px)", boxShadow: "6px 6px 0px var(--itachi_cloak)", backgroundColor: "var(--itachi_cloak)", color: "#fff" }
+                  }}
+                >
+                  VIEW WORK
+                </Box>
+             </Stack>
+           </Grow>
+         </Box>
 
-                <div className="relative flex items-center justify-between gap-3">
-                  <div>
-                    <p
-                      className="font-the-last-shuriken uppercase tracking-[0.25em]"
-                      style={{
-                        fontSize: "0.62rem",
-                        color: "rgba(255,255,255,0.68)",
-                      }}
-                    >
-                      Mobile Snapshot
-                    </p>
-                    <p
-                      className="font-midorima"
-                      style={{
-                        fontSize: "1rem",
-                        color: "var(--naruto_hair)",
-                      }}
-                    >
-                      Creative developer mode
-                    </p>
-                  </div>
-                  <span
-                    className="font-the-last-shuriken uppercase"
-                    style={{
-                      fontSize: "0.62rem",
-                      padding: "6px 10px",
-                      borderRadius: "999px",
-                      color: "#fff",
-                      backgroundColor: "rgba(155,34,48,0.85)",
-                    }}
-                  >
-                    Available
-                  </span>
-                </div>
+         {/* ── Right Monogram / Graphic ── */}
+         <Grow in={isVisible} timeout={1200}>
+           <Box sx={{ flex: "0 0 auto", position: "relative", width: { xs: 260, md: 380 }, height: { xs: 260, md: 380 }, display: "flex", alignItems: "center", justifyContent: "center" }}>
+             
+             {/* Orbit Rings matching new theme */}
+             <Box sx={{ position: "absolute", width: "100%", height: "100%", borderRadius: "50%", border: "1.5px solid rgba(26,32,44,0.1)", animation: "ringRotate 20s linear infinite", '@keyframes ringRotate': { 'from': { transform: 'rotate(0deg)' }, 'to': { transform: 'rotate(360deg)' } } }} />
+             <Box sx={{ position: "absolute", width: "80%", height: "80%", borderRadius: "50%", border: "1.5px dashed rgba(246,108,45,0.2)", animation: "ringRotate 15s linear infinite reverse" }} />
+             
+             {/* Monogram Box matching Bento aesthetic */}
+             <Box sx={{
+               width: { xs: 130, md: 170 }, height: { xs: 130, md: 170 },
+               backgroundColor: "#fff", border: "4px solid var(--itachi_cloak)", borderRadius: "24px",
+               display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+               boxShadow: "10px 10px 0px var(--naruto_jumpsuit)",
+               transform: "rotate(-5deg)", transition: "var(--transition)",
+               "&:hover": { transform: "rotate(0deg) scale(1.05)", boxShadow: "14px 14px 0px var(--naruto_jumpsuit)" },
+               zIndex: 5,
+             }}>
+               <Typography sx={{ fontFamily: "var(--font-njnaruto)", fontSize: { xs: "2.4rem", md: "3.2rem" }, color: "var(--itachi_cloak)", lineHeight: 1 }}>
+                 RAM.
+               </Typography>
+               <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: { xs: "0.55rem", md: "0.7rem" }, color: "var(--naruto_jumpsuit)", letterSpacing: "3px", fontWeight: "bold", mt: 1 }}>
+                 ENGINEER & DESIGNER
+               </Typography>
+             </Box>
 
-                <div className="relative mt-4 mx-auto w-full max-w-[240px]">
-                  <div
-                    className="absolute inset-x-5 -bottom-3 h-10 rounded-full blur-2xl"
-                    style={{ background: "rgba(27,38,59,0.9)" }}
-                  />
-                  <img
-                    src={imgMaster}
-                    alt="Vishnu Sai Ram portrait"
-                    className="relative z-10 w-full h-[220px] object-cover rounded-[22px]"
-                    style={{
-                      border: "3px solid rgba(255,255,255,0.16)",
-                      boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
-                    }}
-                  />
-                  <div
-                    className="absolute -left-2 bottom-4 z-20 rounded-full"
-                    style={{
-                      padding: "7px 12px",
-                      backgroundColor: "rgba(255,255,255,0.95)",
-                      color: "var(--kakashi_jumpsuit)",
-                      fontFamily: "var(--font-the-last-shuriken)",
-                      fontSize: "0.62rem",
-                      letterSpacing: "0.12em",
-                    }}
-                  >
-                    React + TypeScript
-                  </div>
-                  <div
-                    className="absolute -right-2 top-4 z-20 rounded-full"
-                    style={{
-                      padding: "7px 12px",
-                      backgroundColor: "rgba(231,228,25,0.92)",
-                      color: "var(--itachi_cloak)",
-                      fontFamily: "var(--font-the-last-shuriken)",
-                      fontSize: "0.62rem",
-                      letterSpacing: "0.12em",
-                    }}
-                  >
-                    UI First
-                  </div>
-                </div>
+             {/* Floating Badges */}
+             <Box sx={{ position: "absolute", top: "8%", right: "2%", px: 2, py: 1, backgroundColor: "#fff", border: "2px solid var(--itachi_cloak)", borderRadius: "999px", boxShadow: "4px 4px 0px var(--itachi_cloak)", fontFamily: "var(--font-oswald)", fontSize: "0.7rem", fontWeight: "bold", color: "var(--itachi_cloak)", zIndex: 6, animation: "badgeFloat 4s ease-in-out infinite alternate", '@keyframes badgeFloat': { '0%': { transform: 'translateY(0)' }, '100%': { transform: 'translateY(-12px)' } } }}>
+               REACT + TS
+             </Box>
+             <Box sx={{ position: "absolute", bottom: "12%", left: "-2%", px: 2, py: 1, backgroundColor: "var(--naruto_jumpsuit)", border: "2px solid var(--itachi_cloak)", borderRadius: "999px", boxShadow: "4px 4px 0px var(--itachi_cloak)", fontFamily: "var(--font-oswald)", fontSize: "0.7rem", fontWeight: "bold", color: "#fff", zIndex: 6, animation: "badgeFloat 4s ease-in-out infinite alternate 1.5s" }}>
+               UI FIRST
+             </Box>
+           </Box>
+         </Grow>
+       </Box>
 
-                <div className="grid grid-cols-3 gap-2 mt-4">
-                  {mobileHighlights.map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-[18px] text-center"
-                      style={{
-                        padding: "10px 6px",
-                        backgroundColor: "rgba(255,255,255,0.08)",
-                        border: "1px solid rgba(255,255,255,0.14)",
-                      }}
-                    >
-                      <p
-                        className="font-midorima"
-                        style={{
-                          fontSize: "1rem",
-                          lineHeight: 1.1,
-                          color: "var(--naruto_hair)",
-                        }}
-                      >
-                        {item.value}
-                      </p>
-                      <p
-                        className="font-the-last-shuriken uppercase"
-                        style={{
-                          marginTop: "4px",
-                          fontSize: "0.55rem",
-                          letterSpacing: "0.18em",
-                          color: "rgba(255,255,255,0.72)",
-                        }}
-                      >
-                        {item.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* CTA Buttons */}
-          <div
-            className="flex items-center flex-wrap pointer-events-auto"
-            style={{
-              gap: isMobile ? "12px" : "16px",
-              marginTop: isMobile ? "8px" : "24px",
-              animation: "fadeInUp 0.6s ease-out 0.6s both",
-            }}
-          >
-            <a
-              href="#contact"
-              className="no-underline cursor-pointer transition-transform duration-300 hover:scale-105"
-              style={{
-                padding: isMobile ? "10px 24px" : "12px 32px",
-                backgroundColor: "var(--naruto_sage_red)",
-                color: "#fff",
-                fontFamily: "var(--font-the-last-shuriken)",
-                fontSize: isMobile ? "0.8rem" : "0.9rem",
-                letterSpacing: "1.5px",
-                textTransform: "uppercase",
-                borderRadius: "999px",
-                boxShadow: "0 4px 20px rgba(155,34,48,0.4)",
-              }}
-            >
-              Get in Touch
-            </a>
-            <a
-              href="#projects"
-              className="no-underline cursor-pointer transition-all duration-300"
-              style={{
-                padding: isMobile ? "10px 24px" : "12px 32px",
-                border: "2px solid var(--naruto_hair)",
-                color: "var(--naruto_hair)",
-                fontFamily: "var(--font-the-last-shuriken)",
-                fontSize: isMobile ? "0.8rem" : "0.9rem",
-                letterSpacing: "1.5px",
-                textTransform: "uppercase",
-                borderRadius: "999px",
-              }}
-            >
-              View Work
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Keyframes ── */}
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-          from { transform: translateY(0); }
-          to   { transform: translateY(-20px); }
-        }
-      `}</style>
-    </section>
+       {/* ── Marquee matching new theme ── */}
+       <Box sx={{ position: "absolute", bottom: 0, left: 0, width: "100%", overflow: "hidden", backgroundColor: "#fff", borderTop: "2px solid var(--itachi_cloak)", py: 2, zIndex: 10 }}>
+         <Box sx={{ display: "flex", whiteSpace: "nowrap", animation: "marqueeScroll 30s linear infinite", width: "max-content", '@keyframes marqueeScroll': { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-33.333%)' } } }}>
+           {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+             <Typography key={i} sx={{ display: "inline-flex", alignItems: "center", fontFamily: "var(--font-oswald)", fontSize: "0.85rem", letterSpacing: "3px", fontWeight: "bold", color: "var(--itachi_cloak)", px: 4 }}>
+               {item} <Box component="span" sx={{ color: "var(--naruto_jumpsuit)", ml: 8, fontSize: "0.6rem" }}>◆</Box>
+             </Typography>
+           ))}
+         </Box>
+       </Box>
+    </Box>
   );
 };
 

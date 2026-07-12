@@ -26,11 +26,17 @@ const Navbar = () => {
   return (
     <>
       <nav
-        style={{ width: scrolled ? "92%" : "100%" }}
+        style={{
+          width: scrolled ? "92%" : "100%",
+          backgroundColor: scrolled ? "rgba(27, 38, 59, 0.75)" : "var(--kakashi_jumpsuit)",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+          border: scrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "none",
+        }}
         className={`
           fixed left-1/2 -translate-x-1/2 z-50
           flex items-center justify-between
-          bg-(--kakashi_jumpsuit) text-(--itachi_cloud_border)
+          text-(--itachi_cloud_border)
           transition-all duration-500 ease-in-out
           ${scrolled
             ? "top-3 px-5 py-2 rounded-full shadow-2xl"
@@ -39,11 +45,12 @@ const Navbar = () => {
         `}
       >
         {/* ── Logo ── */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <img
+        <div className="flex items-center gap-2 flex-shrink-0 select-none cursor-pointer">
+          <img 
             src={navLogo}
-            alt="logo"
-            className={`transition-all duration-500 ${scrolled ? "h-8" : "h-10 md:h-14"}`}
+            alt="VSR Logo"
+            className="transition-all duration-500 object-contain"
+            style={{ height: scrolled ? "32px" : "44px" }}
           />
         </div>
 
@@ -55,7 +62,7 @@ const Navbar = () => {
             ${scrolled ? "text-base" : "text-xl"}
           `}
         >
-          Vishnu's View
+          Vishnu Sai Ram
         </h3>
 
         {/* ── Desktop Nav Links ── */}

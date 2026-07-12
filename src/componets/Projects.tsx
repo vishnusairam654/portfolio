@@ -11,14 +11,28 @@ import {
 } from "@mui/material";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-import projCinemaetrics from "../assets/project_images/cinemaetrics.png";
-import projCreativeHeaven from "../assets/project_images/creative_heaven.png";
-import projEbank from "../assets/project_images/ebank.png";
-import projNxtWatch from "../assets/project_images/nxtwatch.png";
-import projStockPulse from "../assets/project_images/stockpulse.png";
-import projStoreIt from "../assets/project_images/store_it.png";
-import projWanderWay from "../assets/project_images/wander_way.png";
-import projBookified from "../assets/project_images/voiceOfWords.png";
+/* ── Project Images ── */
+import storeItImg from "../assets/project_images/store_it.png";
+import creativeHeavenImg from "../assets/project_images/creative_heaven.png";
+import wanderWayImg from "../assets/project_images/wander_way.png";
+import voiceOfWordsImg from "../assets/project_images/voiceOfWords.png";
+import cinemetricsImg from "../assets/project_images/cinemaetrics.png";
+import nxtWatchImg from "../assets/project_images/nxtwatch.png";
+import ebankImg from "../assets/project_images/ebank.png";
+import stockPulseImg from "../assets/project_images/stockpulse.png";
+
+const projectImages: Record<string, string> = {
+  "StoreIt": storeItImg,
+  "Creative Haven": creativeHeavenImg,
+  "WanderWay": wanderWayImg,
+  "Voice of Words": voiceOfWordsImg,
+  "CineMetrics": cinemetricsImg,
+  "Nxt Watch": nxtWatchImg,
+  "EBank": ebankImg,
+  "StockPulse": stockPulseImg,
+};
+
+
 
 /* ── Hook ── */
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -50,7 +64,6 @@ interface Project {
   github: string;
   live: string;
   status: "complete" | "in-progress";
-  image?: string;
 }
 
 /* ── Rank Config ── */
@@ -63,68 +76,62 @@ const RC: Record<Rank, { color: string; bg: string; shadow: string; solidShadow:
 /* ── Projects Data ── */
 const projects: Project[] = [
   {
-    rank: "S", emoji: "🚀", title: "StoreIt", subtitle: "Cloud Storage Platform",
-    description: "Production-grade Google Drive–like app enabling secure file upload, management, sharing, and real-time storage tracking — built on Next.js 15 & React 19 with a polished, fully responsive UI.",
+    rank: "S", emoji: "🏦", title: "Proxy Bank", subtitle: "Enterprise Fintech Ecosystem (Under Development)",
+    description: "A comprehensive UX/UI design vision and architectural case study for a simulated centralized banking economy. Encompasses over 250 screens across Consumer, Bank Operations, and Central Authority altitudes, demonstrating complex information architecture, real-time data visualization, and absolute design restraint.",
+    tech: ["Figma", "Information Architecture", "Data Visualization", "Design Systems", "FinTech UX"],
+    github: "#in-progress", live: "#in-progress", status: "in-progress",
+  },
+  {
+    rank: "S", emoji: "✈️", title: "WanderWay", subtitle: "AI-Powered Travel & Route Architecture",
+    description: "A highly scalable travel planning engine bridging LLM orchestration with structured relational data. Enforces strict JSON schema compliance from AI models, utilizes PostgreSQL B-Tree indexing for rapid routing, and layers Redis caching to drop redundant API latencies by 60%.",
+    tech: ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "LLM APIs", "TailwindCSS"],
+    github: "https://github.com/vishnusairam654/WanderWay.git", live: "https://wander-way-weld.vercel.app/", status: "complete",
+  },
+  {
+    rank: "S", emoji: "🎙️", title: "Voice of Words", subtitle: "Conversational AI Document Engine",
+    description: "Production-grade RAG platform engineered for high-concurrency ingestion. Enables users to hold real-time WebRTC voice/text conversations with uploaded documents. Mitigates server timeouts by offloading PDF/DOCX parsing entirely to browser-side web workers.",
+    tech: ["Next.js", "React 19", "TypeScript", "MongoDB", "Clerk", "Vapi AI", "TailwindCSS"],
+    github: "https://github.com/vishnusairam654/voiceOfWords", live: "https://voice-of-words.vercel.app/", status: "complete",
+  },
+  {
+    rank: "A", emoji: "🚀", title: "StoreIt", subtitle: "Cloud Asset Storage Engine",
+    description: "Secure cloud storage platform designed to operate within strict container memory constraints. Handles concurrent, high-volume binary uploads using chunked segmentation pipelines and database-level ownership controls.",
     tech: ["Next.js 15", "React 19", "TypeScript", "Appwrite", "TailwindCSS", "ShadCN UI"],
-    github: "https://github.com/vishnusairam654/StoreIt.git",
-    live: "https://store-it-now.vercel.app/",
-    status: "complete", image: projStoreIt,
+    github: "https://github.com/vishnusairam654/StoreIt.git", live: "https://store-it-now.vercel.app/", status: "complete",
   },
   {
-    rank: "S", emoji: "🎨", title: "Creative Haven", subtitle: "Privacy-First Creator Platform",
-    description: "Pseudonymous social platform for creators to showcase work and collaborate locally — engineered with geospatial PostGIS queries, multi-layer Redis caching, and full TypeScript coverage.",
-    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "PostGIS", "Redis", "TailwindCSS"],
-    github: "#", live: "#", status: "in-progress", image: projCreativeHeaven,
-  },
-  {
-    rank: "A", emoji: "✈️", title: "Wander Way", subtitle: "AI Travel Planner",
-    description: "AI-powered itinerary generator that creates personalized, budget-optimized travel plans with day-wise schedules and detailed cost breakdowns.",
-    tech: ["Next.js", "React", "Node.js", "LLM APIs", "TailwindCSS"],
-    github: "hhttps://github.com/vishnusairam654/WanderWay.git", live: "https://wander-way-weld.vercel.app/", status: "complete", image: projWanderWay,
-  },
-  {
-    rank: "A", emoji: "🎙️", title: "Bookified", subtitle: "AI-Powered Document Conversation Platform",
-    description: "Production-grade app enabling users to upload any document (PDF, DOCX, TXT, XML) and hold natural voice or text conversations about it with an AI assistant — featuring per-document AI summaries (key ideas, concepts, highlights) with PDF export, smart search, and AI-generated book covers, all behind Clerk-authenticated routes.",
-    tech: ["Next.js", "React 19", "TypeScript", "MongoDB", "Clerk", "Vapi AI", "Vercel Blob", "TailwindCSS", "ShadCN UI", "Framer Motion"],
-    github: "https://github.com/vishnusairam654/voiceOfWords",
-    live: "https://voice-of-words.vercel.app/",
-    status: "complete", image: projBookified,
-  },
-  {
-    rank: "A", emoji: "🎬", title: "CineMetrics", subtitle: "Movie Analytics Engine",
-    description: "Data-driven movie discovery platform that visualizes trends, ratings, and comparisons through interactive dashboards.",
+    rank: "B", emoji: "🎬", title: "CineMetrics", subtitle: "Movie Analytics Dashboard",
+    description: "Data-driven media discovery platform that visualizes trends, ratings, and comparisons through clean, interactive React dashboards.",
     tech: ["React.js", "Node.js", "REST APIs", "Data Visualization"],
-    github: "https://github.com/vishnusairam654/movie_app.git", live: "https://cinemetrics-flax.vercel.app/", status: "complete", image: projCinemaetrics,
+    github: "https://github.com/vishnusairam654/movie_app.git", live: "https://cinemetrics-flax.vercel.app/", status: "complete",
   },
   {
-    rank: "A", emoji: "📺", title: "Nxt Watch", subtitle: "Video Streaming Platform",
-    description: "Full-featured YouTube-like app with authentication, video playback, trending feeds, and saved videos functionality.",
+    rank: "B", emoji: "📺", title: "Nxt Watch", subtitle: "Video Streaming Architecture",
+    description: "Full-featured media application with JWT authentication, protected routing, state management, and video playback functionality.",
     tech: ["React.js", "Styled-Components", "React Router", "Context API", "JWT"],
-    github: "https://github.com/vishnusairam654/NxtWatch_new.git", live: "https://nxtwatch-qzyh.vercel.app/", status: "complete", image: projNxtWatch,
-  },
-  {
-    rank: "B", emoji: "🏦", title: "EBank", subtitle: "Secure Auth System",
-    description: "Banking-style authentication system featuring JWT login, protected routes, and secure session management.",
-    tech: ["React.js", "JWT", "REST API", "React Router"],
-    github: "#", live: "#", status: "complete", image: projEbank,
-  },
-  {
-    rank: "B", emoji: "📈", title: "StockPulse", subtitle: "Stock Tracking Dashboard",
-    description: "Real-time stock market tracker with search, watchlist, and dynamic price visualization.",
-    tech: ["Next.js", "React", "REST APIs", "TailwindCSS"],
-    github: "#", live: "#", status: "complete", image: projStockPulse,
-  },
+    github: "https://github.com/vishnusairam654/NxtWatch_new.git", live: "https://nxtwatch-qzyh.vercel.app/", status: "complete",
+  }
 ];
 
-/* ── Image Placeholder ── */
-const ImgPlaceholder = ({ emoji, color }: { emoji: string; color: string }) => (
-  <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 1, background: "#f5f0eb" }}>
-    <Typography sx={{ fontSize: "2.5rem", lineHeight: 1 }}>{emoji}</Typography>
-    <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: "0.6rem", letterSpacing: "2px", color, opacity: 0.5 }}>
-      SCREENSHOT INCOMING
-    </Typography>
-  </Box>
-);
+/* ── Project Image ── */
+const ProjectImage = ({ title, emoji, color }: { title: string; emoji: string; color: string }) => {
+  const imgSrc = projectImages[title];
+  return imgSrc ? (
+    <Box
+      component="img"
+      src={imgSrc}
+      alt={title}
+      sx={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1px" }}
+    />
+  ) : (
+    <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 1, background: "#f5f0eb" }}>
+      <Typography sx={{ fontSize: "2.5rem", lineHeight: 1 }}>{emoji}</Typography>
+      <Typography sx={{ fontFamily: "var(--font-oswald)", fontSize: "0.6rem", letterSpacing: "2px", color, opacity: 0.5 }}>
+        SCREENSHOT INCOMING
+      </Typography>
+    </Box>
+  );
+};
 
 /* ── Rank Section Header ── */
 const RankHeader = ({ rank, color }: { rank: Rank; color: string }) => (
@@ -201,11 +208,7 @@ const SRankCard = ({ proj, isVisible, delay }: { proj: Project; isVisible: boole
               borderRadius: "2px",
             }}
           >
-            {proj.image ? (
-              <img src={proj.image} alt={proj.title} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "2px", display: "block" }} />
-            ) : (
-              <ImgPlaceholder emoji={proj.emoji} color={cfg.color} />
-            )}
+            <ProjectImage title={proj.title} emoji={proj.emoji} color={cfg.color} />
           </Box>
         </Box>
 
@@ -321,11 +324,7 @@ const ProjectCard = ({ proj, isVisible, delay }: { proj: Project; isVisible: boo
               borderRadius: "2px",
             }}
           >
-            {proj.image ? (
-              <img src={proj.image} alt={proj.title} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "2px", display: "block" }} />
-            ) : (
-              <ImgPlaceholder emoji={proj.emoji} color={cfg.color} />
-            )}
+            <ProjectImage title={proj.title} emoji={proj.emoji} color={cfg.color} />
           </Box>
         </Box>
 

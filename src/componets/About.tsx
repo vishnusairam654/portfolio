@@ -13,20 +13,14 @@ import {
 } from "@mui/material";
 
 import {
-  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer,
-  SiThreedotjs, SiJavascript, SiPython, SiCplusplus, SiHtml5, SiCss,
-  SiNodedotjs, SiAppwrite, SiPostgresql, SiRedis, SiJsonwebtokens,
-  SiNumpy, SiPandas, SiVercel, SiFigma, SiGit,
+  SiReact, SiNextdotjs, SiTypescript, SiRedux, SiTailwindcss, SiHtml5,
+  SiJavascript, SiPython, SiCplusplus, SiFastapi, SiNodedotjs, SiExpress,
+  SiWebrtc, SiPostgresql, SiRedis, SiMongodb, SiAppwrite, SiDocker,
+  SiVercel, SiGit, SiGithub, SiGithubactions, SiLinux, SiPostman, SiFigma, SiFramer
 } from "react-icons/si";
-import { FaDatabase, FaBrain, FaRobot, FaEye } from "react-icons/fa";
+import { FaDatabase } from "react-icons/fa";
 
-import image9 from "../assets/images/image_9.png";
-import image10 from "../assets/images/image_10.png";
-import image11 from "../assets/images/image_11.png";
-import image12 from "../assets/images/image_12.png";
-import image13 from "../assets/images/image_13.png";
-import image14 from "../assets/images/image_14.png";
-import imageMaster3 from "../assets/images/image_master3.png";
+
 
 /* ── Intersection observer hook ── */
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -46,82 +40,135 @@ const useOnScreen = (options: IntersectionObserverInit) => {
 
 /* ── Shared data ── */
 const certifications = [
-  { name: "Google UI/UX",        color: "var(--naruto_jumpsuit)", bg: "#FFF5F0" },
-  { name: "Microsoft AI",        color: "var(--sasuke_susanoo)",  bg: "#F8F5FA" },
-  { name: "NxtWave Python",      color: "var(--naruto_collar)",   bg: "#F0F4FA" },
-  { name: "NxtWave Full Stack",  color: "var(--zoro_bandana)",    bg: "#F0FAF4" },
+  { name: "Google UX Design Professional", color: "var(--naruto_jumpsuit)", bg: "#FFF5F0" },
+  { name: "Microsoft AI Fundamentals",     color: "var(--sasuke_susanoo)",  bg: "#F8F5FA" },
+  { name: "NxtWave Advanced Python",       color: "var(--naruto_collar)",   bg: "#F0F4FA" },
+  { name: "NxtWave Full-Stack Development",color: "var(--zoro_bandana)",    bg: "#F0FAF4" },
 ];
 
 const stats = [
-  { label: "Missions Completed", value: "10+", color: "var(--naruto_jumpsuit)" },
-  { label: "Jutsu Mastered",     value: "20+", color: "var(--zoro_bandana)" },
-  { label: "Chakra Capacity",    value: "100%", color: "var(--nami_log_pose)" },
+  { label: "Production Apps Deployed", value: "5+", color: "var(--naruto_jumpsuit)" },
+  { label: "Open Source Contributions", value: "Active", color: "var(--zoro_bandana)" },
+  { label: "Engineering Focus", value: "AI & Systems", color: "var(--nami_log_pose)" },
 ];
 
-const aboutCollageImages = [
-  { src: image9,       w: "220px", h: "330px", top: "5%",  left: "0%",  rotate: -8, z: 1,  delay: "0s",   dur: "6s" },
-  { src: image10,      w: "440px", h: "280px", top: "45%", right: "1%", rotate: 5,  z: 8,  delay: "0.5s", dur: "7s" },
-  { src: image11,      w: "240px", h: "330px", top: "5%",  right: "0%", rotate: 6,  z: 3,  delay: "1s",   dur: "5.5s" },
-  { src: image12,      w: "440px", h: "200px", bottom: "30%", left: "5%",  rotate: 20, z: 9, delay: "1.5s", dur: "6.5s" },
-  { src: imageMaster3, w: "280px", h: "440px", top: "1%",  left: "32%", rotate: 2,  z: 5,  delay: "0.8s", dur: "6s", shadow: "0 10px 30px rgba(0,0,0,0.3) !important" },
-  { src: image13,      w: "260px", h: "400px", top: "60%", left: "10%", rotate: 12, z: 9,  delay: "0.3s", dur: "6.2s" },
-  { src: image14,      w: "320px", h: "260px", top: "80%", right: "15%", rotate: 8, z: 10, delay: "1.8s", dur: "5.8s", noFrame: true },
-];
+export const portfolioSkills = {
+  frontendArchitecture: [
+    { name: "Next.js (App Router)", icon: "nextjs" },
+    { name: "React.js 19", icon: "react" },
+    { name: "Redux Toolkit", icon: "redux" },
+    { name: "Tailwind CSS", icon: "tailwindcss" },
+    { name: "Framer Motion", icon: "framer" },
+    { name: "ShadCN UI", icon: "react" }
+  ],
+  backendAndApiDesign: [
+    { name: "Node.js", icon: "nodejs" },
+    { name: "Express.js", icon: "express" },
+    { name: "FastAPI (Python)", icon: "fastapi" },
+    { name: "REST APIs", icon: "api" },
+    { name: "WebRTC Voice Sockets", icon: "webrtc" }
+  ],
+  databasesAndCaching: [
+    { name: "PostgreSQL", icon: "postgresql" },
+    { name: "MongoDB (Mongoose)", icon: "mongodb" },
+    { name: "Redis", icon: "redis" },
+    { name: "Appwrite Engine", icon: "appwrite" }
+  ],
+  aiAndTooling: [
+    { name: "LLM Orchestration (LangChain/Groq)", icon: "python" },
+    { name: "RAG Pipelines", icon: "python" },
+    { name: "Git & GitHub", icon: "github" },
+    { name: "Docker", icon: "docker" },
+    { name: "Postman", icon: "postman" },
+    { name: "Vercel", icon: "vercel" }
+  ],
+  uxUiDesign: [
+    { name: "Figma", icon: "figma" },
+    { name: "Information Architecture (IA)", icon: "figma" },
+    { name: "Enterprise Design Systems", icon: "figma" },
+    { name: "Data Visualization", icon: "react" }
+  ]
+};
+
+const getIconElement = (iconName: string) => {
+  switch (iconName) {
+    case "typescript": return <SiTypescript />;
+    case "python": return <SiPython />;
+    case "sql": return <FaDatabase />;
+    case "cpp": return <SiCplusplus />;
+    case "javascript": return <SiJavascript />;
+    case "nextjs": return <SiNextdotjs />;
+    case "react": return <SiReact />;
+    case "redux": return <SiRedux />;
+    case "tailwindcss": return <SiTailwindcss />;
+    case "htmlcss": return <SiHtml5 />;
+    case "fastapi": return <SiFastapi />;
+    case "nodejs": return <SiNodedotjs />;
+    case "express": return <SiExpress />;
+    case "webrtc": return <SiWebrtc />;
+    case "api": return <FaDatabase />;
+    case "postgresql": return <SiPostgresql />;
+    case "redis": return <SiRedis />;
+    case "mongodb": return <SiMongodb />;
+    case "appwrite": return <SiAppwrite />;
+    case "docker": return <SiDocker />;
+    case "vercel": return <SiVercel />;
+    case "github": return <SiGithub />;
+    case "githubactions": return <SiGithubactions />;
+    case "linux": return <SiLinux />;
+    case "postman": return <SiPostman />;
+    case "figma": return <SiFigma />;
+    case "framer": return <SiFramer />;
+    default: return <FaDatabase />;
+  }
+};
 
 const chakraNatures = [
   {
-    title: "🔥 FIRE", subtitle: "FRONTEND", color: "var(--naruto_jumpsuit)",
-    skills: [
-      { name: "React.js",          icon: <SiReact /> },
-      { name: "Next.js",           icon: <SiNextdotjs /> },
-      { name: "TypeScript",        icon: <SiTypescript /> },
-      { name: "TailwindCSS",       icon: <SiTailwindcss /> },
-      { name: "Framer Motion",     icon: <SiFramer /> },
-      { name: "Three.js",          icon: <SiThreedotjs /> },
-      { name: "WebGL",             icon: <FaEye /> },
-      { name: "ShadCN UI",         icon: <Box component="span" sx={{ fontWeight: "bold" }}>ui</Box> },
-      { name: "Styled-Components", icon: <SiCss /> },
-      { name: "React Router DOM",  icon: <SiReact /> },
-    ],
+    title: "🔥 FIRE",
+    subtitle: "FRONTEND ARCHITECTURE",
+    color: "var(--naruto_jumpsuit)",
+    skills: portfolioSkills.frontendArchitecture.map(skill => ({
+      name: skill.name,
+      icon: getIconElement(skill.icon)
+    }))
   },
   {
-    title: "⚡ LIGHTNING", subtitle: "LANGUAGES", color: "var(--sanji_hair)",
-    skills: [
-      { name: "JavaScript (ES6+)", icon: <SiJavascript /> },
-      { name: "TypeScript",        icon: <SiTypescript /> },
-      { name: "Python",            icon: <SiPython /> },
-      { name: "C++",               icon: <SiCplusplus /> },
-      { name: "HTML5",             icon: <SiHtml5 /> },
-      { name: "CSS3",              icon: <SiCss /> },
-    ],
+    title: "⚡ LIGHTNING",
+    subtitle: "BACKEND & API DESIGN",
+    color: "var(--sanji_hair)",
+    skills: portfolioSkills.backendAndApiDesign.map(skill => ({
+      name: skill.name,
+      icon: getIconElement(skill.icon)
+    }))
   },
   {
-    title: "🌊 WATER", subtitle: "BACKEND", color: "var(--nami_log_pose)",
-    skills: [
-      { name: "Node.js",    icon: <SiNodedotjs /> },
-      { name: "Appwrite",   icon: <SiAppwrite /> },
-      { name: "PostgreSQL", icon: <SiPostgresql /> },
-      { name: "PostGIS",    icon: <FaDatabase /> },
-      { name: "Redis",      icon: <SiRedis /> },
-      { name: "REST APIs",  icon: <FaDatabase /> },
-      { name: "JWT",        icon: <SiJsonwebtokens /> },
-      { name: "NoSQL",      icon: <FaDatabase /> },
-    ],
+    title: "🌊 WATER",
+    subtitle: "DATABASES & CACHING",
+    color: "var(--nami_log_pose)",
+    skills: portfolioSkills.databasesAndCaching.map(skill => ({
+      name: skill.name,
+      icon: getIconElement(skill.icon)
+    }))
   },
   {
-    title: "🌿 WOOD", subtitle: "AI / ML & TOOLS", color: "var(--zoro_bandana)",
-    skills: [
-      { name: "NumPy",              icon: <SiNumpy /> },
-      { name: "Pandas",             icon: <SiPandas /> },
-      { name: "NLP",                icon: <FaBrain /> },
-      { name: "Computer Vision",    icon: <FaEye /> },
-      { name: "LLM APIs",           icon: <FaRobot /> },
-      { name: "Prompt Engineering", icon: <FaBrain /> },
-      { name: "Git",                icon: <SiGit /> },
-      { name: "Vercel",             icon: <SiVercel /> },
-      { name: "Figma",              icon: <SiFigma /> },
-    ],
+    title: "🪨 EARTH",
+    subtitle: "AI & TOOLING",
+    color: "var(--sasuke_susanoo)",
+    skills: portfolioSkills.aiAndTooling.map(skill => ({
+      name: skill.name,
+      icon: getIconElement(skill.icon)
+    }))
   },
+  {
+    title: "🌪️ WIND",
+    subtitle: "UX/UI DESIGN",
+    color: "var(--zoro_bandana)",
+    skills: portfolioSkills.uxUiDesign.map(skill => ({
+      name: skill.name,
+      icon: getIconElement(skill.icon)
+    }))
+  }
 ];
 
 /* ── Shared Chakra Natures section (used by both layouts) ── */
@@ -133,7 +180,7 @@ const ChakraNaturesSection = ({ isVisible }: { isVisible: boolean }) => (
       backgroundColor: "#FDF8F5",
       backgroundImage: `
         radial-gradient(#e2d5c4 1px, transparent 1px),
-        linear-gradient(135deg, var(--naruto_jumpsuit) 0%, var(--sanji_hair) 33%, var(--nami_log_pose) 66%, var(--zoro_bandana) 100%)
+        linear-gradient(135deg, var(--naruto_jumpsuit) 0%, var(--sanji_hair) 25%, var(--nami_log_pose) 50%, var(--sasuke_susanoo) 75%, var(--zoro_bandana) 100%)
       `,
       backgroundSize: "20px 20px, 100% 100%",
       py: { xs: 8, md: 10 },
@@ -163,9 +210,9 @@ const ChakraNaturesSection = ({ isVisible }: { isVisible: boolean }) => (
         >
           CHAKRA NATURES
         </Typography>
-        <Grid container spacing={{ xs: 3, md: 4 }}>
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {chakraNatures.map((nature) => (
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }} key={nature.title}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={nature.title}>
               <Paper
                 elevation={0}
                 sx={{
@@ -225,9 +272,6 @@ const MobileAboutLayout = () => {
 
   return (
     <>
-      {/* Spacer = Hero height so About starts after the hero */}
-      <div style={{ height: "100vh", width: "100%", pointerEvents: "none" }} />
-
       {/* About content — normal flow on mobile */}
       <Box
         id="about"
@@ -235,8 +279,11 @@ const MobileAboutLayout = () => {
         sx={{
           width: "100vw",
           backgroundColor: "#FDF8F5",
-          backgroundImage: "radial-gradient(#e2d5c4 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
+          backgroundImage: `
+            radial-gradient(#e2d5c4 1px, transparent 1px),
+            linear-gradient(135deg, rgba(246,108,45,0.12) 0%, rgba(244,208,63,0.12) 25%, rgba(91,200,232,0.12) 50%, rgba(106,55,119,0.12) 75%, rgba(26,107,60,0.12) 100%)
+          `,
+          backgroundSize: "20px 20px, 100% 100%",
           color: "#1A202C",
           pt: 8,
           pb: 6,
@@ -279,44 +326,12 @@ const MobileAboutLayout = () => {
                 color: "var(--itachi_cloak)",
               }}
             >
-              THE SHINOBI{" "}
+              ENGINEERING COMPLEXITY.{" "}
               <span style={{ color: "var(--naruto_jumpsuit)" }}>
-                BEHIND THE SCREEN
+                DESIGNING CLARITY.
               </span>
             </Typography>
 
-            {/* Single hero photo — polaroid style */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                mb: 4,
-              }}
-            >
-              <Box
-                sx={{
-                  background: "#fff",
-                  padding: "8px 8px 28px 8px",
-                  boxShadow: "0 8px 28px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.12)",
-                  borderRadius: "2px",
-                  transform: "rotate(-2deg)",
-                  width: "220px",
-                  flexShrink: 0,
-                }}
-              >
-                <img
-                  src={imageMaster3}
-                  alt="Vishnu Sai Ram"
-                  style={{
-                    width: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                    borderRadius: "2px",
-                    height: "280px",
-                  }}
-                />
-              </Box>
-            </Box>
 
             {/* Bio */}
             <Typography
@@ -328,9 +343,7 @@ const MobileAboutLayout = () => {
                 color: "#4A5568",
               }}
             >
-              I'm a Frontend Developer and UI/UX enthusiast. Not just a
-              developer, but a shinobi of the web, trained through real
-              missions, failed builds, and late-night debugging sessions.
+              I am a Full-Stack Software Engineer and UX Architect specializing in high-concurrency systems and enterprise-grade interfaces. I focus on enforcing strict data schemas, managing application state under tight constraints, and designing financial/data interfaces where every pixel serves a functional purpose.
             </Typography>
 
             {/* Certifications */}
@@ -409,22 +422,24 @@ const DesktopAboutLayout = () => {
 
   return (
     <>
-      <div style={{ height: "200vh", width: "100%", pointerEvents: "none" }} />
-
       <Box
         id="about"
         ref={ref}
         sx={{
-          position: "absolute",
-          top: "100vh",
-          left: 0,
+          position: "relative",
           width: "100vw",
-          height: "100vh",
+          minHeight: "100vh",
           backgroundColor: "#FDF8F5",
-          backgroundImage: "radial-gradient(#e2d5c4 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
+          backgroundImage: `
+            radial-gradient(#e2d5c4 1px, transparent 1px),
+            linear-gradient(135deg, rgba(246,108,45,0.12) 0%, rgba(244,208,63,0.12) 25%, rgba(91,200,232,0.12) 50%, rgba(106,55,119,0.12) 75%, rgba(26,107,60,0.12) 100%)
+          `,
+          backgroundSize: "20px 20px, 100% 100%",
           color: "#1A202C",
           overflow: "visible",
+          display: "flex",
+          alignItems: "center",
+          py: 12,
           "&::before": {
             content: '""',
             position: "absolute",
@@ -438,16 +453,13 @@ const DesktopAboutLayout = () => {
           },
         }}
       >
-        {/* ── Text Section (Right) ── */}
+        {/* ── Text Section (Centered) ── */}
         <Box
           sx={{
-            position: "absolute",
-            right: 0,
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: "50vw",
-            height: "40vh",
-            padding: "0 4% 0 2%",
+            position: "relative",
+            width: "84vw",
+            maxWidth: "1400px",
+            margin: "0 auto",
             zIndex: 1,
             display: "flex",
             flexDirection: "column",
@@ -455,7 +467,7 @@ const DesktopAboutLayout = () => {
           }}
         >
           <Fade in={isVisible} timeout={1000}>
-            <Box sx={{ mt: "40px", ml: "18%" }}>
+            <Box sx={{ mt: "40px" }}>
               <Typography
                 variant="h6"
                 sx={{ fontFamily: "var(--font-oswald)", color: "var(--naruto_collar)", letterSpacing: "3px", mb: 1, fontWeight: "bold" }}
@@ -466,16 +478,14 @@ const DesktopAboutLayout = () => {
                 variant="h2"
                 sx={{ fontFamily: "var(--font-the-last-shuriken)", fontSize: { xs: "3rem", md: "4.5rem" }, lineHeight: 1.1, mb: 4, color: "var(--itachi_cloak)" }}
               >
-                THE SHINOBI <br />
-                <span style={{ color: "var(--naruto_jumpsuit)" }}>BEHIND THE SCREEN</span>
+                ENGINEERING COMPLEXITY. <br />
+                <span style={{ color: "var(--naruto_jumpsuit)" }}>DESIGNING CLARITY.</span>
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ fontFamily: "var(--font-midorima)", fontSize: "1.1rem", mb: 3, lineHeight: 1.8, color: "#4A5568" }}
               >
-                I'm a Frontend Developer and UI/UX enthusiast. Not just a
-                developer, but a shinobi of the web, trained through real
-                missions, failed builds, and late-night debugging sessions.
+                I am a Full-Stack Software Engineer and UX Architect specializing in high-concurrency systems and enterprise-grade interfaces. I focus on enforcing strict data schemas, managing application state under tight constraints, and designing financial/data interfaces where every pixel serves a functional purpose.
               </Typography>
 
               <Box sx={{ mb: 6 }}>
@@ -532,60 +542,6 @@ const DesktopAboutLayout = () => {
           </Fade>
         </Box>
 
-        {/* ── Image Collage Section (Left, bleed out) ── */}
-        <Box
-          sx={{
-            position: "absolute",
-            left: "8%",
-            top: "-80px",
-            width: "50vw",
-            height: "90vh",
-            zIndex: 15,
-            overflow: "visible",
-          }}
-        >
-          <Fade in={isVisible} timeout={1500}>
-            <Box
-              sx={{
-                position: "relative",
-                height: "100%",
-                width: "100%",
-                "& .polaroid-card": {
-                  position: "absolute",
-                  background: "#fff",
-                  padding: "8px 8px 24px 8px",
-                  borderRadius: "2px",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.2), 0 2px 6px rgba(0,0,0,0.1)",
-                  transition: "transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-                  "& img": { width: "100%", height: "100%", objectFit: "cover", borderRadius: "2px", display: "block" },
-                },
-              }}
-            >
-              {aboutCollageImages.map((img, i) => (
-                <Box
-                  key={i}
-                  className="polaroid-card"
-                  sx={{
-                    width: img.w,
-                    height: img.h,
-                    top: img.top,
-                    left: (img as any).left,
-                    right: (img as any).right,
-                    bottom: (img as any).bottom,
-                    zIndex: img.z,
-                    transform: `rotate(${img.rotate}deg)`,
-                    boxShadow: (img as any).noFrame ? "none !important" : (img as any).shadow,
-                    background: (img as any).noFrame ? "transparent !important" : undefined,
-                    padding: (img as any).noFrame ? "0 !important" : undefined,
-                    "& img": (img as any).noFrame ? { objectFit: "contain !important" } : {},
-                  }}
-                >
-                  <img src={img.src} alt={`Gallery ${i + 9}`} />
-                </Box>
-              ))}
-            </Box>
-          </Fade>
-        </Box>
       </Box>
 
       <ChakraNaturesSection isVisible={isVisible} />
