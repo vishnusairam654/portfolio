@@ -104,18 +104,11 @@ const projects: Project[] = [
     rank: "S",
     emoji: "🏦",
     title: "Vault Wire",
-    subtitle: "Enterprise Fintech Ecosystem (Under Development)",
-    description:
-      "A comprehensive UX/UI design vision and architectural case study for a simulated centralized banking economy. Encompasses over 250 screens across Consumer, Bank Operations, and Central Authority altitudes, demonstrating complex information architecture, real-time data visualization, and absolute design restraint.",
-    tech: [
-      "Figma",
-      "Information Architecture",
-      "Data Visualization",
-      "Design Systems",
-      "FinTech UX",
-    ],
-    github: "#in-progress",
-    live: "#in-progress",
+    subtitle: "Under Development",
+    description: ".......",
+    tech: ["FinTech UX"],
+    github: "#",
+    live: "#",
     status: "in-progress",
   },
   {
