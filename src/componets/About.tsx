@@ -16,7 +16,7 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiRedux, SiTailwindcss, SiHtml5,
   SiJavascript, SiPython, SiCplusplus, SiFastapi, SiNodedotjs, SiExpress,
   SiWebrtc, SiPostgresql, SiRedis, SiMongodb, SiAppwrite, SiDocker,
-  SiVercel, SiGit, SiGithub, SiGithubactions, SiLinux, SiPostman, SiFigma, SiFramer
+  SiVercel, SiGithub, SiGithubactions, SiLinux, SiPostman, SiFigma, SiFramer
 } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 

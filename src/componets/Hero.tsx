@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Stack, Fade, Slide, Grow } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const roles = [
@@ -15,7 +14,6 @@ const marqueeItems = [
 ];
 
 const Hero = () => {
-  const isMobile = useMediaQuery("(max-width: 900px)");
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
